@@ -41,17 +41,12 @@ class Index extends React.Component {
         .then((states) => {
             /**
              * Loop through cities object and turn into array
-             * and limit to first 7 
              */
-            let cityCount = 0;
             if(states.cities)
             {
                 for(let city in states.cities)
                 {
-                    if(cityCount < 7) {
                         cities.push(states.cities[city])
-                        cityCount++;
-                    }
                 }
                 return cities
             }
@@ -81,12 +76,12 @@ class Index extends React.Component {
     const { profile } = this.props
     console.log(this.state)
 
-    const cities = this.state.cities && this.state.states ? this.state.cities.map((city) => (
+    const cities = this.state.cities && this.state.states ? this.state.cities.slice(0, 7).map((city) => (
               <a href={`/${ city.slug }/${ this.state.states.slug}`} className="item">
                   { city.title }
               </a>
             )) : '';
-    const shops = this.state.shops ? this.state.shops.map((shop) => (
+    const shops = this.state.shops ? this.state.shops.slice(0, 3).map((shop) => (
       <a href={`/shops/${ shop.slug }`} className="ShopArchive ui card">
         <section className="image">
             { shop.featured_img ?
