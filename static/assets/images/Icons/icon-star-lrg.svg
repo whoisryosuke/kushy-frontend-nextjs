@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="34" viewBox="0 0 34 34">
+  <defs>
+    <polygon id="icon-star-lrg-a" points="33.529 15.368 22.407 15.368 19.002 4.471 15.596 15.368 4.471 15.368 13.483 22.127 9.919 33.529 19 26.265 28.081 33.529 24.518 22.126"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(-2 -2)">
+    <use fill="#FFF" xlink:href="#icon-star-lrg-a"/>
+    <path stroke="#FFF" stroke-width="2" d="M25.6833086,22.5022092 L30.0111115,36.35422 L19,27.5453307 L7.98833473,36.3546629 L12.3178509,22.5030637 L1.47057672,14.3676471 L14.8607524,14.3676471 L19.0020628,1.11797731 L23.141796,14.3676471 L36.5294175,14.3676471 L25.6833086,22.5022092 Z"/>
+  </g>
+</svg>
