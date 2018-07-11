@@ -13,7 +13,6 @@ export default class KushyApi {
         return this.fetch(`${this.domain}/states/${state}`, {
             method: 'GET'
         }).then(res => {
-            console.log(res);
             return Promise.resolve(res)
         })
     }
@@ -21,11 +20,9 @@ export default class KushyApi {
     getAll(section, params = null)
     {
         const url = params ? `${this.domain}/${section}/${params}` : `${this.domain}/${section}/`
-        console.log(url)
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
-            console.log(res);
             return Promise.resolve(res)
         })
     }
@@ -35,7 +32,16 @@ export default class KushyApi {
         return this.fetch(`${this.domain}/location/${lat}/${lng}`, {
             method: 'GET'
         }).then(res => {
-            console.log(res);
+            return Promise.resolve(res)
+        })
+    }
+
+    search(field, search)
+    {
+        const url = `${this.domain}/search/${field}/${search}`
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
             return Promise.resolve(res)
         })
     }

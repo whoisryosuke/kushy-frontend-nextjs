@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
-import { Rating } from 'semantic-ui-react'
 import Main from '../layouts/Main/Main'
 import KushyApi from '../utils/KushyApi'
+
+import PostLoop from '../containers/PostLoop'
 
 class Index extends React.Component {
   static getInitialProps ({ reduxStore, req }) {
@@ -21,13 +22,6 @@ class Index extends React.Component {
   }
 
   componentDidMount () {
-    // Grab location based search of shops
-    this.state.api.getAll('shops')
-        .then((shops) => 
-            this.setState({
-                shops: shops.data
-            })
-        );
 
     // Need location name + list of cities
     let cities = [];
@@ -81,43 +75,6 @@ class Index extends React.Component {
                   { city.title }
               </a>
             )) : '';
-    const shops = this.state.shops ? this.state.shops.slice(0, 3).map((shop) => (
-      <a href={`/shops/${ shop.slug }`} className="ShopArchive ui card">
-        <section className="image">
-            { shop.featured_img ?
-                <img src={ shop.featured_img } alt={ shop.name } />
-                : '' }
-        </section>
-        <div className="content">
-            { shop.categories.length > 0 ?
-            <div className="meta">
-                {  shop.categories[0].category.name }
-            </div> 
-            : '' }
-            <h3 className="header">
-                { shop.name }
-            </h3>
-            <div className="description">
-                { shop.location.address ?
-                    <span>{ shop.location.address }
-                    <br /></span> 
-                : '' }
-                { shop.location.city || shop.location.state || shop.location.postal_code ?
-                   <span>{ shop.location.city }, { shop.location.state } { shop.location.postal_code }</span>
-                : '' }
-            </div>
-        </div>
-        <div className="extra content">
-            { shop.distance ?
-            <span className="right floated">
-                <p className="ShopArchive_distance">{ Math.round(shop.distance * 100) / 100 } miles away</p>
-            </span>
-            : '' }
-            <Rating icon='star' defaultRating={ shop.rating } maxRating={5} disabled />
-            <h5 className="tiny">{ shop.reviews }</h5>
-        </div>
-    </a>
-    )) : '';
 
     const productCategories = this.state.categories ? this.state.categories.map((category) => (
               <a href={`/products/category/${ category.name }`} className="item">
@@ -219,9 +176,7 @@ class Index extends React.Component {
               </div>
           </nav>
           <section className="ui centered pt1">
-              <section className="ui link three cards centered stackable">
-                  { shops }
-              </section>
+            <PostLoop section="shops" count="3" />
           </section>
           <section className="ui grid center">
               <section className="center aligned column">
@@ -260,10 +215,8 @@ class Index extends React.Component {
           <nav className="ui secondary pointing menu">
               { productCategories }
           </nav>
-          <section className="ui link three cards centered stackable pt1">
-              @foreach ($products as $product)
-                  @include('components.products.archive', ['data' => $product]) 
-              @endforeach
+          <section className="ui centered pt1">
+            <PostLoop section="products" count="3" />
           </section>
           <section className="ui grid center">
               <section className="center aligned column">

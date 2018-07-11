@@ -1,3 +1,14 @@
+## v0.0.2 - July 10th, 2018
+
+## Major Changes
+
+* Swapped out `fetch()` in Index page with new Redux container `<PostLoop />`. Added actions (`posts.actions.js`), reducers, and constants for the container.
+
+## New Components
+
+* `<PostLoop section="shops" count="3" />` - Container component for displaying Kushy posts from any section, using SUI Cards. It uses Redux to dispatch an action to query API (using the section set in props). If the query was successful and the state is changed, it's mapped to the props. If the props change to a mappable array, we assume it's a successful result and map the results into Card components (see more below).
+* `<Card section="shops" data={shopObject} />` - Component for dynamically displaying the correct card based on the section. Rather than polluting places with `if()` or `switch()` statements, we use this as a universal card picker.
+
 ## v0.0.1 - July 9th, 2018
 
 ### Structure 

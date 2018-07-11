@@ -4,7 +4,9 @@ import {connect} from 'react-redux'
 import Link from 'next/link'
 import { Button, Dropdown, Menu } from 'semantic-ui-react'
 
-import { Input } from 'semantic-ui-react'
+// import { Input } from 'semantic-ui-react'
+
+import HeaderSearch from '../Search/HeaderSearch/HeaderSearch'
 
 import "./Header.less"
 
@@ -30,25 +32,10 @@ class Header extends React.Component {
         <Menu.Item
           name='search'
         >
-        <div className="HeaderSearch tablet only">
-          <div className="ui search" id="HeaderSearchInput">
-              <div className="ui left icon input fluid">
-                  <Input 
-                    icon='search' 
-                    placeholder="Search for cannabis products, shops, strains…"
-                    className="prompt"
-                    name="search"
-                    id="header_search"
-                  />
-              </div>
+          <div className="HeaderSearch tablet only">
+            <HeaderSearch />
           </div>
-        </div>
         </Menu.Item>
-        <Menu.Item
-          name='friends'
-          active={activeItem === 'friends'}
-          onClick={this.handleItemClick}
-        />
 
         <Menu.Menu position='right'>
           {profile ? 
