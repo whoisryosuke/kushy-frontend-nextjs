@@ -1,8 +1,8 @@
 import React from 'react'
-import withAuth from '../utils/withAuth'
+import withAuth from 'utils/withAuth'
 import { userActions } from '../actions';
 
-import Header from '../containers/header';
+import Header from 'containers/header';
 
 class Dashboard extends React.Component {
 

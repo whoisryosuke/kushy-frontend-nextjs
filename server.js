@@ -91,8 +91,23 @@ app.prepare()
       return app.render(req, res, '/events/create', { slug: req.params.slug })
     })
 
-    server.get('/events/:slug', (req, res) => {
-      return app.render(req, res, '/events/profile', { slug: req.params.slug })
+    /**
+     * Shops
+     */
+    server.get('/shops/:slug', (req, res) => {
+      return app.render(req, res, '/shops/details', { slug: req.params.slug })
+    })
+    
+    server.get('/shops/:slug/reviews', (req, res) => {
+      return app.render(req, res, '/shops/reviews', { slug: req.params.slug })
+    })
+
+    server.get('/shops/:slug/menu', (req, res) => {
+      return app.render(req, res, '/shops/menu', { slug: req.params.slug })
+    })
+
+    server.get('/shops/:slug/photos', (req, res) => {
+      return app.render(req, res, '/shops/photos', { slug: req.params.slug })
     })
 
     // Callback for OAuth2 API

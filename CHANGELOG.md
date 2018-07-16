@@ -1,13 +1,45 @@
+## v0.0.5 - July 16th, 2018
+
+## Minor Changes
+
+* Removed babel plugin for root-import, and replaced with a Webpack 2 config in `next.config.js`.
+
+## v0.0.4 - July 12th, 2018
+
+### Major Changes
+
+* SHOP PROFILES: Added menu page to shop profile, and created a ShopMenu component (+ children components) to display Inventory (aka menu) data.
+* More detailed README with instructions + explanations.
+
+### New Components
+
+* ShopMenuRows - `<Flowers data={ data } />` - This folder contains table rows for each data type (based on product categories - flowers, concentrates, etc).
+* `<ShopMenu />` - Accepts an inventory object from the Kushy API as props, sorts the data into sections, and loops through each section to return a `<Table />` containing the `<ShopMenuHeader />` and `<ShopMenuContent />`
+* `<ShopMenuContent data={ data } section={ section } />` - Takes the inventory data (products) for a section and maps through them, applying the correct ShopMenuRows component. Basically a switch component that takes the section and displays the appropriate table row when looping through the products.
+* `<ShopMenuHeader section={ section } />` - The table header for the shop menu. Creates the right column headings based on the section props.
+
+## v0.0.3 - July 11th, 2018
+
+### Major Changes
+
+* SHOP PROFILES: Added shop profile pages. Route added to `server.js`. Page created in `shops/details.js`. Also made a layout component to wrap shop profile pages, to easily access the layout across multuple pages, and so we can SSR each tab individually (details/menu/photos/etc).
+* Made the `fetch()` method in the `KushyApi` class async.
+
+### New Components
+
+* `<ShopProfile shop={ shop } />` - A layout component that wraps pages to display a shop profile, and any child components are rendered in the layout's content area. Accepts the shop object from the single shop API endpoint.
+
 ## v0.0.2 - July 10th, 2018
 
-## Major Changes
+### Major Changes
 
 * Swapped out `fetch()` in Index page with new Redux container `<PostLoop />`. Added actions (`posts.actions.js`), reducers, and constants for the container.
 
-## New Components
+### New Components
 
 * `<PostLoop section="shops" count="3" />` - Container component for displaying Kushy posts from any section, using SUI Cards. It uses Redux to dispatch an action to query API (using the section set in props). If the query was successful and the state is changed, it's mapped to the props. If the props change to a mappable array, we assume it's a successful result and map the results into Card components (see more below).
 * `<Card section="shops" data={shopObject} />` - Component for dynamically displaying the correct card based on the section. Rather than polluting places with `if()` or `switch()` statements, we use this as a universal card picker.
+* `<HeaderSearch />` - Component that wraps the SUI Search component. Grabs from the `/search/` API endpoint, sorts results by section, and return results to the SUI component (which does all the magic).
 
 ## v0.0.1 - July 9th, 2018
 

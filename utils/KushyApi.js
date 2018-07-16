@@ -46,14 +46,62 @@ export default class KushyApi {
         })
     }
 
-    fetch(url, options) {
+    getProfile(section, slug) {
+        const url = `${this.domain}/${section}/${slug}`
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
+    getInventory(slug) {
+        const url = `${this.domain}/inventory/menu/${slug}`
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            console.log(res)
+            return Promise.resolve(res)
+        })
+    }
+
+    /**
+     * Gets the reviews from a specific post by ID
+     * 
+     * @param {string - UUID} id 
+     */
+    getReviews(id) {
+        const url = `${this.domain}/reviews/post/${id}`
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
+    /**
+     * Grabs photos from specific post
+     * 
+     * @param {string} UUID of post 
+     * @returns {Promise} Resolved promise of JSONifed results
+     */
+    getPhotos(id) {
+        const url = `${this.domain}/photos/post/${id}`
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
+    async fetch(url, options) {
         // performs api calls sending the required authentication headers
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
 
-        return fetch(url, {
+        return await fetch(url, {
                 headers,
                 ...options
             })

@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
-import Api from  '../../utils/SeshSourceApi'
-import withAuth from  '../../utils/withAuth'
+import Api from  'utils/SeshSourceApi'
+import withAuth from  'utils/withAuth'
 import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import Header from '../../containers/header';
+import Header from 'containers/header';
 
 import '../../assets/css/seshsource.css'
 

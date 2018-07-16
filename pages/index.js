@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
-import Main from '../layouts/Main/Main'
-import KushyApi from '../utils/KushyApi'
+import Main from 'layouts/Main/Main'
+import KushyApi from 'utils/KushyApi'
 
-import PostLoop from '../containers/PostLoop'
+import PostLoop from 'containers/PostLoop'
 
 class Index extends React.Component {
   static getInitialProps ({ reduxStore, req }) {
@@ -25,7 +25,7 @@ class Index extends React.Component {
 
     // Need location name + list of cities
     let cities = [];
-    this.state.api.getAll('state')
+    this.state.api.getAll('states')
         .then((states) => {
             this.setState({
                 states
@@ -51,16 +51,13 @@ class Index extends React.Component {
             })
         );
 
-    // Grab products
-    this.state.api.getAll('products')
-        .then((products) =>
+    // Grab product categories
+    this.state.api.getAll('categories', '?section=product')
+        .then((categories) =>
             this.setState({
-                products: products.data
+                categories
             })
         );
-
-    // Grab product categories
-    let categories = this.state.api.getAll('categories', '?section=product');
 
     // Grab all user activity
 
@@ -68,7 +65,6 @@ class Index extends React.Component {
 
   render () {
     const { profile } = this.props
-    console.log(this.state)
 
     const cities = this.state.cities && this.state.states ? this.state.cities.slice(0, 7).map((city) => (
               <a href={`/${ city.slug }/${ this.state.states.slug}`} className="item">

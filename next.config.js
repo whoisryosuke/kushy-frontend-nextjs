@@ -1,5 +1,6 @@
 const withLess = require('@zeit/next-less')
 const withCSS = require('@zeit/next-css')
+const path = require('path')
 
 // To add new modules, nest the function (like a HOC in React)
 module.exports = withCSS(withLess({
@@ -13,6 +14,8 @@ module.exports = withCSS(withLess({
                 }
             }
         })
+        console.log(config)
+        config.resolve.modules.push(path.resolve('./'))
 
         return config
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Api from  '../../utils/SeshSourceApi'
-import withAuth from  '../../utils/withAuth'
+import withAuth from  'utils/withAuth'
 import moment from 'moment';
 import fetch from 'isomorphic-unfetch'
 import { withStyles } from '@material-ui/core/styles';
@@ -13,7 +13,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import Header from '../../containers/header';
+import Header from 'containers/header';
 
 import '../../assets/css/seshsource.css'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Search, Grid, Header, Segment } from 'semantic-ui-react'
-import KushyApi from '../../../utils/KushyApi'
+import KushyApi from 'utils/KushyApi'
 
 const api = new KushyApi()
 
