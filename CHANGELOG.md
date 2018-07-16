@@ -1,8 +1,17 @@
-## v0.0.5 - July 16th, 2018
+## v0.0.6 - July 16th, 2018
 
 ## Minor Changes
 
 * Removed babel plugin for root-import, and replaced with a Webpack 2 config in `next.config.js`.
+
+## v0.0.5 - July 14th, 2018
+
+Added the photo route to shop profile. Displays photos in a grid as cards.
+
+### New Components
+
+* `<PhotoCard />`
+* `<PhotoGrid />`
 
 ## v0.0.4 - July 12th, 2018
 
