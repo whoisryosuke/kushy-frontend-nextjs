@@ -1,4 +1,4 @@
-import config from '../config/config'
+import config from 'config/config'
 
 export default class KushyApi {
     constructor() {
@@ -36,9 +36,19 @@ export default class KushyApi {
         })
     }
 
+    getPostsByCategory(section, category)
+    {
+        const params = `?filter[slug]=${category}&include=relationships`
+        return this.fetch(`${this.domain}/categories/${params}`, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
     search(field, search)
     {
-        const url = `${this.domain}/search/${field}/${search}`
+        const url = `${this.domain}/search/posts/?filter[${field}]=${search}`
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
@@ -47,7 +57,7 @@ export default class KushyApi {
     }
 
     getProfile(section, slug) {
-        const url = `${this.domain}/${section}/${slug}`
+        const url = `${this.domain}/${section}/?filters[slug]=${slug}`
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {

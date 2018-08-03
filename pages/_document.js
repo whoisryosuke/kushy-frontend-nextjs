@@ -1,5 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 
+import 'kushy-design/semantic/dist/semantic.css'
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -21,7 +23,7 @@ export default class MyDocument extends Document {
           />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="stylesheet" href="/static/assets/css/kushy-semantic.css" />
-          <link rel="stylesheet" href="/static/assets/css/semantic.min.css" />
+          {/* <link rel="stylesheet" href="/static/assets/css/semantic.min.css" /> */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
         </Head>
         <body>

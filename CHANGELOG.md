@@ -1,10 +1,16 @@
-## v0.0.6 - July 16th, 2018
+# v0.0.7 - July 17th, 2018
+
+## Major Changes
+
+* Installed kushy-design, the Kushy Design System. Replaces the local Semantic UI install. Still requires SUI React as a peer dependency. 
+
+# v0.0.6 - July 16th, 2018
 
 ## Minor Changes
 
 * Removed babel plugin for root-import, and replaced with a Webpack 2 config in `next.config.js`.
 
-## v0.0.5 - July 14th, 2018
+# v0.0.5 - July 14th, 2018
 
 Added the photo route to shop profile. Displays photos in a grid as cards.
 
@@ -13,7 +19,7 @@ Added the photo route to shop profile. Displays photos in a grid as cards.
 * `<PhotoCard />`
 * `<PhotoGrid />`
 
-## v0.0.4 - July 12th, 2018
+# v0.0.4 - July 12th, 2018
 
 ### Major Changes
 
@@ -27,7 +33,7 @@ Added the photo route to shop profile. Displays photos in a grid as cards.
 * `<ShopMenuContent data={ data } section={ section } />` - Takes the inventory data (products) for a section and maps through them, applying the correct ShopMenuRows component. Basically a switch component that takes the section and displays the appropriate table row when looping through the products.
 * `<ShopMenuHeader section={ section } />` - The table header for the shop menu. Creates the right column headings based on the section props.
 
-## v0.0.3 - July 11th, 2018
+# v0.0.3 - July 11th, 2018
 
 ### Major Changes
 
@@ -38,7 +44,7 @@ Added the photo route to shop profile. Displays photos in a grid as cards.
 
 * `<ShopProfile shop={ shop } />` - A layout component that wraps pages to display a shop profile, and any child components are rendered in the layout's content area. Accepts the shop object from the single shop API endpoint.
 
-## v0.0.2 - July 10th, 2018
+# v0.0.2 - July 10th, 2018
 
 ### Major Changes
 
@@ -50,7 +56,7 @@ Added the photo route to shop profile. Displays photos in a grid as cards.
 * `<Card section="shops" data={shopObject} />` - Component for dynamically displaying the correct card based on the section. Rather than polluting places with `if()` or `switch()` statements, we use this as a universal card picker.
 * `<HeaderSearch />` - Component that wraps the SUI Search component. Grabs from the `/search/` API endpoint, sorts results by section, and return results to the SUI component (which does all the magic).
 
-## v0.0.1 - July 9th, 2018
+# v0.0.1 - July 9th, 2018
 
 ### Structure 
 

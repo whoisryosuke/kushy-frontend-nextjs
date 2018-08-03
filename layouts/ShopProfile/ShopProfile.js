@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Main from '../Main/Main'
 
-import config from '~/config/config'
+import config from 'config/config'
 
 export default ({ children, shop, profile, section }) => {
   return (

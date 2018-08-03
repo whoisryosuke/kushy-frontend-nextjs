@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 import ShopCard from '../Shop/ShopCard/ShopCard'
 import ProductCard from '../Product/ProductCard/ProductCard'
@@ -8,7 +9,7 @@ import ProductCard from '../Product/ProductCard/ProductCard'
  * Accepts a section and the card data
  * Returns the appropriate card
  */
-export default (props) => {
+const PostCard = (props) => {
   const { section, data } = props
 
   let card
@@ -32,3 +33,14 @@ export default (props) => {
   )
 
 }
+
+PostCard.PropTypes = {
+  section: PropTypes.string.isRequired
+};
+
+// Specifies the default values for props:
+PostCard.defaultProps = {
+  section: 'shops'
+};
+
+export default PostCard;

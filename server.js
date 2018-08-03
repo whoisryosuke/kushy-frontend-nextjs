@@ -83,17 +83,17 @@ app.prepare()
       return app.render(req, res, '/dashboard')
     })
 
-    server.get('/events/manage', (req, res) => {
-      return app.render(req, res, '/events/manage', { slug: req.params.slug })
-    })
-
-    server.get('/events/create', (req, res) => {
-      return app.render(req, res, '/events/create', { slug: req.params.slug })
-    })
-
     /**
      * Shops
      */
+    server.get('/shops/', (req, res) => {
+      return app.render(req, res, '/shops/archive', { params: req.params })
+    })
+
+    server.get('/shops/category/:category', (req, res) => {
+      return app.render(req, res, '/shops/category', { category: req.params.category })
+    })
+
     server.get('/shops/:slug', (req, res) => {
       return app.render(req, res, '/shops/details', { slug: req.params.slug })
     })

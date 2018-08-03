@@ -13,8 +13,13 @@ class ShopDetails extends React.Component {
     {
         await api.getProfile('shops', slug)
             .then((results) => (
-                shop = results.data
+                shop = results.data[0]
             ))
+        
+        if(!shop)
+        {
+            // @todo: redirect
+        }
     }
 
     return {

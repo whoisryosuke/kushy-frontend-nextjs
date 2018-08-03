@@ -16,19 +16,27 @@ export class PostLoop extends Component {
   componentDidMount()
   {
     const {dispatch} = this.props
-    if(this.props.section)
+    if(!this.props.data && this.props.section)
     {
         dispatch(postsActions.getPosts(this.props.section));
     }
   }
 
   render() {
-      const cards = this.props.posts[this.props.section] && this.props.posts[this.props.section].data ? this.props.posts[this.props.section].data.slice(0, this.props.count).map((data) => (
-          <PostCard key={ data.id } section={ this.props.section } data={ data } />
+    const { posts, section, count, data } = this.props
+    
+    let loop = posts[section] && posts[section].data ? posts[section].data.slice(0, count) : null
+    if(data)
+    {
+      loop = data.slice(0, count)
+    }
+
+    const cards = loop ? loop.map((data) => (
+          <PostCard key={ data.id } section={ section } data={ data } />
       )) : '';
     
     return (
-      <Card.Group itemsPerRow={this.props.count} centered stackable>
+      <Card.Group itemsPerRow={count} centered stackable>
           { cards }
       </Card.Group>
     )

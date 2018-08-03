@@ -72,7 +72,8 @@ class Index extends React.Component {
               </a>
             )) : '';
 
-    const productCategories = this.state.categories ? this.state.categories.map((category) => (
+            console.log(this.state.categories)
+    const productCategories = this.state.categories ? this.state.categories.data.map((category) => (
               <a href={`/products/category/${ category.name }`} className="item">
                   { category.name }
               </a>)) : '';

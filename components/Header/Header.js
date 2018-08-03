@@ -9,7 +9,7 @@ import { Button, Dropdown, Menu } from 'semantic-ui-react'
 
 import HeaderSearch from '../Search/HeaderSearch/HeaderSearch'
 
-import "./Header.less"
+import "./Header.css"
 
 class Header extends React.Component {
   state = {
