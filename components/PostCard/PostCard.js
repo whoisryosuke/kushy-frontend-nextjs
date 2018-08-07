@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import ShopCard from '../Shop/ShopCard/ShopCard'
-import ProductCard from '../Product/ProductCard/ProductCard'
+import BrandCard from "components/Brand/BrandCard/BrandCard";
+import ProductCard from "components/Product/ProductCard/ProductCard";
+import ShopCard from "components/Shop/ShopCard/ShopCard";
 
 /**
  * Card facade for section cards
@@ -15,6 +16,11 @@ const PostCard = (props) => {
   let card
   switch(section)
   {
+
+      case 'brands':
+        card = <BrandCard data={ data } />
+        break;
+
       case 'shops':
         card = <ShopCard data={ data } />
         break;

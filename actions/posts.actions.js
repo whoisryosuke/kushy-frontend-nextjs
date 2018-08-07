@@ -12,7 +12,8 @@ function getPosts(section) {
     return dispatch => {
         dispatch(request({ section }));
 
-        api.getAll(section)
+        const params = `?include=categories`
+        api.getAll(section, params)
             .then(
                 posts => {
                     dispatch(success(section, posts));

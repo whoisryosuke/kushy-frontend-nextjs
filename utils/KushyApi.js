@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import config from 'config/config'
 
 export default class KushyApi {
@@ -36,10 +37,15 @@ export default class KushyApi {
         })
     }
 
-    getPostsByCategory(section, category)
+    getPostsByCategory(section, category, page = 1)
     {
-        const params = `?filter[slug]=${category}&include=relationships`
-        return this.fetch(`${this.domain}/categories/${params}`, {
+        let params = {}
+        params.page = page
+
+        const filter = queryString.stringify(params);
+
+        const url = `${this.domain}/${section}/category/${category}/?${filter}`
+        return this.fetch(url, {
             method: 'GET'
         }).then(res => {
             return Promise.resolve(res)
@@ -57,7 +63,7 @@ export default class KushyApi {
     }
 
     getProfile(section, slug) {
-        const url = `${this.domain}/${section}/?filters[slug]=${slug}`
+        const url = `${this.domain}/${section}/?filter[slug]=${slug}&include=categories`
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
@@ -70,7 +76,6 @@ export default class KushyApi {
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
-            console.log(res)
             return Promise.resolve(res)
         })
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Router from 'next/router'
 import Link from 'next/link'
 import ShopProfile from 'layouts/ShopProfile/ShopProfile'
 import KushyApi from 'utils/KushyApi'
@@ -16,7 +17,7 @@ class ShopReviewsPage extends React.Component {
     {
         await api.getProfile('shops', slug)
             .then((results) => (
-                shop = results.data
+                shop = results.data && results.data.length > 0 ? results : Router.redirect('/')
             ))
         await api.getReviews(shop.id)
             .then((results) => (
@@ -39,14 +40,16 @@ class ShopReviewsPage extends React.Component {
 
   render () {
       const { shop, reviews, profile } = this.props
-      
+      console.log(reviews);
     return (
-      <ShopProfile shop={ shop } profile={ profile } section="details">
+      <ShopProfile shop={ shop.data[0] } profile={ profile } section="details">
         <section id="menu" className="ui basic segment">
             <h2 className="ui header">
                 <div className="content">
                     Reviews
+                    {reviews.meta && 'total' in reviews.meta ?
                     <span className="sub header">{ reviews.meta.total } Total reviews</span>
+                    : ''}
                 </div>
             </h2>
             <ReviewsLoop reviews={ reviews.data } />

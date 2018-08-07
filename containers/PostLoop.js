@@ -23,7 +23,7 @@ export class PostLoop extends Component {
   }
 
   render() {
-    const { posts, section, count, data } = this.props
+    const { posts, section, columns, count, data } = this.props;
     
     let loop = posts[section] && posts[section].data ? posts[section].data.slice(0, count) : null
     if(data)
@@ -36,7 +36,7 @@ export class PostLoop extends Component {
       )) : '';
     
     return (
-      <Card.Group itemsPerRow={count} centered stackable>
+      <Card.Group itemsPerRow={columns} centered stackable>
           { cards }
       </Card.Group>
     )

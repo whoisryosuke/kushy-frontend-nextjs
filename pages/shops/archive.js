@@ -9,8 +9,9 @@ class ShopArchivePage extends React.Component {
     static async getInitialProps({ reduxStore, req, query: { slug } }) {
         const api = new KushyApi();
 
-        let categories, shops, params
+        let categories, shops
 
+        const params = `?include=categories`
         await api.getAll('shops', params)
             .then((results) => (
                 shops = results

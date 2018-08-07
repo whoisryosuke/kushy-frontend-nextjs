@@ -4,28 +4,41 @@ import Link from 'next/link'
 import ShopArchive from 'layouts/Shops/ShopArchive/ShopArchive'
 import KushyApi from 'utils/KushyApi'
 import PostLoop from 'containers/PostLoop'
+import PaginationMenu from "components/PaginationMenu/PaginationMenu";
 
 class ShopCategoryPage extends React.Component {
-    static async getInitialProps({ reduxStore, req, query: { category } }) {
+    static async getInitialProps({ reduxStore, req, query: { query: { page }, category, section } }) {
         const api = new KushyApi();
 
-        let categories, shops
+        let categories, posts
+        console.log(page)
 
-        await api.getPostsByCategory(category)
+        await api.getPostsByCategory(section, category, page)
             .then((results) => (
-                shops = results
+                posts = results
             ))
 
-        const categoryParams = '?filter[section]=shop'
+        // Since brands are basically products, the category refs products
+        let filter
+        if(section == 'brands')
+        {
+            filter = 'product'
+        } else {
+            filter = section.slice(0, -1);
+        }
+
+        const categoryParams = `?filter[section]=${filter}`;
         await api.getAll('categories', categoryParams)
             .then((results) => (
                 categories = results
             ))
 
         return {
-            shops,
             categories,
-            category
+            category,
+            page,
+            posts,
+            section
         }
     }
     constructor(props) {
@@ -36,7 +49,8 @@ class ShopCategoryPage extends React.Component {
     }
 
     render() {
-        const { shops, categories, category } = this.props
+        const { categories, category, page, posts, section } = this.props;
+        const redirect = `/shops/category/${category}/?`;
 
         const header = <h1 className="ui header">Browsing "<span className="text red">{ category }</span>"</h1>
 
@@ -44,7 +58,12 @@ class ShopCategoryPage extends React.Component {
             <ShopArchive header={header} categories={categories}>
                 <section className="ui container pt3">
                     <section className="ui centered pt1">
-                        <PostLoop data={shops.data} section="shops" count="3" />
+                        <PostLoop data={posts.data} section={ section } count="9" columns="3" />
+                        <PaginationMenu 
+                            active={posts.meta.current_page} 
+                            total={posts.meta.last_page} 
+                            redirect={redirect}
+                        />
                     </section>
                 </section>
             </ShopArchive>

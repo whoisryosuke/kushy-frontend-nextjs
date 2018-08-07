@@ -9,9 +9,9 @@ export default (props) => {
         <Card link className="ShopArchive">
             <Image src={ shop.featured_img } alt={ shop.name } />
             <Card.Content>
-                { shop.categories.length > 0 ?
+                { shop.includes.categories && shop.includes.categories.length > 0 ?
                 <Card.Meta>
-                    {  shop.categories[0].category.name }
+                    {  shop.includes.categories[0].category.name }
                 </Card.Meta> 
                 : '' }
                 <Card.Header>
@@ -30,7 +30,7 @@ export default (props) => {
             <Card.Content extra>
                 { shop.distance ?
                 <span className="right floated">
-                    <p className="ShopArchive_distance">{ Math.round(shop.distance * 100) / 100 } miles away</p>
+                    <p className="distance">{ Math.round(shop.distance * 100) / 100 } miles away</p>
                 </span>
                 : '' }
                 <Rating icon='star' defaultRating={ shop.rating } maxRating={5} disabled />

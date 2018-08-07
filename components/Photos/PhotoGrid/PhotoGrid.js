@@ -5,7 +5,7 @@ import PhotoCard from 'components/Photos/PhotoCard/PhotoCard'
 
 export default ({ photos }) => {
     console.log(photos)
-    const photoLoop = photos.length > 0 ? photos.map((photo) => (
+    const photoLoop = photos && photos.length > 0 ? photos.map((photo) => (
       <Grid.Column>
         <PhotoCard photo={ photo } />
       </Grid.Column>

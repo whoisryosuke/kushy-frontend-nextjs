@@ -84,6 +84,30 @@ app.prepare()
     })
 
     /**
+     * Brands
+     */
+
+    server.get('/brands/category/:category', (req, res) => {
+      return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'brands' })
+    })
+
+    /**
+     * Strains
+     */
+
+    server.get('/strains/category/:category', (req, res) => {
+      return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'strains' })
+    })
+
+    /**
+     * Products
+     */
+
+    server.get('/products/category/:category', (req, res) => {
+      return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'products' })
+    })
+
+    /**
      * Shops
      */
     server.get('/shops/', (req, res) => {
@@ -91,7 +115,7 @@ app.prepare()
     })
 
     server.get('/shops/category/:category', (req, res) => {
-      return app.render(req, res, '/shops/category', { category: req.params.category })
+      return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'shops' })
     })
 
     server.get('/shops/:slug', (req, res) => {

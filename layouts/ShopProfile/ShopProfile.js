@@ -12,13 +12,13 @@ export default ({ children, shop, profile, section }) => {
                 <section className="ShopProfile__content twelve wide computer sixteen wide mobile column">
                     <header className="ShopHeader ui grid segment">
                         <aside className="three wide computer sixteen wide mobile column">
-                            <img src={ shop.avatar } alt="{ shop.name }" className="ui medium circular image" />
+                            <img src={ shop.avatar } alt={ shop.name } className="ui medium circular image" />
                         </aside>
                         <section className="thirteen wide computer sixteen wide mobile column">
-                            { shop.categories.length > 0 ?
+                            { shop.includes && shop.includes.categories && shop.includes.categories.length > 0 ?
                             <h4 className="ShopHeader__type">
-                                <a href={`/shops/category/{ shop.categories[0].category.name }`}>
-                                    {  shop.categories[0].category.name }
+                                      <a href={`/shops/category/${shop.includes.categories[0].category.slug }`}>
+                                    {  shop.includes.categories[0].category.name }
                                 </a>
                             </h4>
                             : '' }

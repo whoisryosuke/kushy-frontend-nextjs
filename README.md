@@ -84,6 +84,8 @@ Component that wraps the SUI Search component. Grabs from the `/search/` API end
 
 ## Todo
 
+Focus on creating all routes SSR first (e.g. pagination through query params), then optimize later by making Redux components that load data dynamically (e.g. clicking next page tells postloop component to query next page without hard-loading a new page).
+
 ### Complete
 
 * [✅] - Redux implemented with NextJS
@@ -97,14 +99,14 @@ Component that wraps the SUI Search component. Grabs from the `/search/` API end
 * [✅] - Make container / card component for products
 * [✅] - Shop profile (layout + details)
 * [✅] - Shop profile - Menu
+* [✅] - Shop profile - Photos route
+* [✅] - Shop profile - Reviews route
 * [✅] - Swap search in header with SUI React search component (to enable autocomplete)
 
 
 ### High Priority
 * [] - Make container / card component for activity
-* [] - Shop profile - Photos route
 * [] - Shop profile - Events route
-* [] - Shop profile - Reviews route
 * [] - Shop profile - Deals route
 * [] - Shop profile - Breadcrumbs on top
 * [] - Shop profile - Hours of operation in sidebar
