@@ -42,7 +42,7 @@ class ShopMenuPage extends React.Component {
       const { shop, inventory, profile } = this.props
       
     return (
-      <ShopProfile shop={ shop.data[0] } profile={ profile } section="details">
+      <ShopProfile shop={ shop.data[0] } profile={ profile } section="menu">
         <section id="menu" className="ui basic segment">
             <h2 className="ui header">
                 <div className="content">
