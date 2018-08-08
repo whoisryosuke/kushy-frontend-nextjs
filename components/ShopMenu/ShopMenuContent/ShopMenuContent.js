@@ -1,5 +1,4 @@
 import React from 'react'
-import { Table } from 'semantic-ui-react'
 
 import Flowers from '../ShopMenuRows/Flowers'
 
@@ -19,13 +18,8 @@ export default ({ data, section }) => {
       break;
   }
 
-  const products = data.map(product => (
-    <ProductTableRow data={ product } />
-  ))
 
-  return (
-    <Table.Body>
-      { products }
-    </Table.Body>
-  )
+  return data.map(product => (
+    <ProductTableRow key={product.id} data={product} />
+  ))
 }

@@ -30,7 +30,7 @@ export default ({ section }) => {
   }
 
   const headerItems = headerItemsCollection[section].map(headerItem => (
-    <Table.HeaderCell>{ headerItem }</Table.HeaderCell>
+    <Table.HeaderCell key={ headerItem }>{ headerItem }</Table.HeaderCell>
   ))
 
   return (
