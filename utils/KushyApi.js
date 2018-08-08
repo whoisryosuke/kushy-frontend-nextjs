@@ -4,10 +4,21 @@ import config from 'config/config'
 export default class KushyApi {
     constructor() {
         this.domain = config.kushyApiUrl
+        this.headers = { Accept: "application/json", "Content-Type": "application/json" };
         this.fetch = this.fetch.bind(this)
         this.getState = this.getState.bind(this)
         this.getShopsByLocation = this.getShopsByLocation.bind(this)
         this.getAll = this.getAll.bind(this)
+    }
+
+    /**
+     * Adds the token to fetch auth headers
+     * 
+     * @param {string} token - JWT token
+     */
+    setToken(token) {
+        this.headers["Authorization"] = "Bearer " + token;
+        console.log(this.headers)
     }
 
     getState(state) {
@@ -109,13 +120,24 @@ export default class KushyApi {
         })
     }
 
+    /**
+     * Gets user profile data 
+     * (requires a JWT token set)
+     * 
+     * @returns {Promise} Resolved promise of JSONifed results
+     */
+    getUser() {
+        const url = `${this.domain}/user/`
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
     async fetch(url, options) {
         // performs api calls sending the required authentication headers
-        const headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-
+        const headers = this.headers
         return await fetch(url, {
                 headers,
                 ...options
