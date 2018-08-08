@@ -1,11 +1,13 @@
 import React from 'react'
+import config from "config/config";
 
 export default () => {
+  const s3 = config.assets.root + config.assets.site;
   return (
     <footer className="SiteFooter ui red inverted segment cta pt2"> 
         <nav className="ui grid centered aligned">
             <aside className="six wide computer sixteen wide mobile column">
-                <img src="/img/Brand/kushy-logotype-white@0.5x.png" className="Logo" alt="Kushy" />
+                <img src={`${s3}Brand/kushy-logotype-white@0.5x.png`} className="Logo" alt="Kushy" />
                 <p>Discover local dispensaries, headshops, glass artists, lawyers, and more with our comprehensive database of cannabis companies.</p>
                 <p>Designed in Los Angeles, CA<br />
                     <span style={{ fontSize: 'small', color: '#CCC', fontStyle: 'italic' }}>Currently in beta</span>
