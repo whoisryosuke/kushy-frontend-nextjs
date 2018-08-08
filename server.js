@@ -21,7 +21,7 @@ const handle = app.getRequestHandler()
 function jsonErrorCheck(data) {
   if('error' in data)
   {
-    return error
+    return data.error
   }
   return data
 }
@@ -209,18 +209,10 @@ app.prepare()
         .then(data => jsonErrorCheck(data))
         .then(data => {
           // Store JWT from response in cookies
-          // if (req.cookies['kushyFToken']) {
-          //   res.clearCookie('kushyFToken')
-          // }
-          // encrypt token with app secret
-          // prevents user from seeing the token
-          // const encryptedToken = CryptoJS.HmacSHA256(data.access_token, process.env.APP_KEY)
-
-          // create a cookie with encrypted hash of access token
-          // res.cookie('kushyFToken', encryptedToken, {
-          //   maxAge: 900000,
-          //   httpOnly: true
-          // });
+          if (req.cookies['kushyFToken']) {
+            res.clearCookie('kushyFToken')
+          }
+          
           res.cookie('kushyFToken', data.access_token, {
             maxAge: 900000,
             httpOnly: true
