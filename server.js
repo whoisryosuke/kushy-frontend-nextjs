@@ -83,6 +83,38 @@ app.prepare()
       return app.render(req, res, '/dashboard')
     })
 
+
+    /**
+     * Static routes
+     */
+    server.get('/about', (req, res) => {
+      return app.render(req, res, '/static/about')
+    })
+
+    server.get('/advertise', (req, res) => {
+      return app.render(req, res, "/static/advertise");
+    })
+
+    server.get('/contact', (req, res) => {
+      return app.render(req, res, "/static/contact");
+    })
+
+    server.get('/how-it-works', (req, res) => {
+      return app.render(req, res, '/static/howitworks')
+    })
+
+    server.get('/press', (req, res) => {
+      return app.render(req, res, "/static/press");
+    })
+
+    server.get('/privacy', (req, res) => {
+      return app.render(req, res, "/static/privacy");
+    })
+
+    server.get('/terms', (req, res) => {
+      return app.render(req, res, "/static/terms");
+    })
+
     /**
      * Brands
      */
