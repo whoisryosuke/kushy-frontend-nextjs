@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Router from "next/router";
 import Link from 'next/link'
-import ShopProfile from 'layouts/ShopProfile/ShopProfile'
+import ShopProfile from 'layouts/Shops/ShopProfile/ShopProfile'
 import KushyApi from 'utils/KushyApi'
 
 import PhotoGrid from 'components/Photos/PhotoGrid/PhotoGrid'
@@ -17,7 +17,7 @@ class ShopPhotoPage extends React.Component {
     {
         await api.getProfile('shops', slug)
             .then((results) => (
-                shop = results.data && results.data.length > 0 ? results : Router.redirect('/')
+                shop = results.data ? results : Router.redirect('/')
             ))
         await api.getPhotos(shop.id)
             .then((results) => (
@@ -42,7 +42,7 @@ class ShopPhotoPage extends React.Component {
       const { shop, photos, profile } = this.props
       console.log(photos)
     return (
-      <ShopProfile shop={ shop.data[0] } profile={ profile } section="details">
+      <ShopProfile shop={ shop.data } profile={ profile } section="photos">
         <section id="menu" className="ui basic segment">
             <h2 className="ui header">
                 <div className="content">

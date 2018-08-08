@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
-import ShopProfile from 'layouts/ShopProfile/ShopProfile'
+import ShopProfile from 'layouts/Shops/ShopProfile/ShopProfile'
 import KushyApi from 'utils/KushyApi'
 
 class ShopDetails extends React.Component {
@@ -13,7 +13,7 @@ class ShopDetails extends React.Component {
     {
         await api.getProfile('shops', slug)
             .then((results) => (
-                shop = results.data[0]
+                shop = results.data
             ))
         
         if(!shop)
@@ -26,17 +26,10 @@ class ShopDetails extends React.Component {
         shop
     }
   }
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-        section: 'reviews'
-    }
-  }
 
   render () {
       const { shop } = this.props
-      
+      console.log(shop)
     return (
       <ShopProfile shop={ shop } section="details">
         <section id="details" class="ContentBox">

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Router from "next/router";
 import Link from 'next/link'
-import ShopProfile from 'layouts/ShopProfile/ShopProfile'
+import ShopProfile from 'layouts/Shops/ShopProfile/ShopProfile'
 import KushyApi from 'utils/KushyApi'
 
 import ShopMenu from 'components/ShopMenu/ShopMenu'
@@ -17,7 +17,7 @@ class ShopMenuPage extends React.Component {
     {
         await api.getProfile('shops', slug)
             .then((results) => (
-                shop = results.data && results.data.length > 0 ? results : Router.redirect('/')
+                shop = results.data ? results : Router.redirect('/')
             ))
         await api.getInventory(slug)
             .then((results) => (
@@ -42,7 +42,7 @@ class ShopMenuPage extends React.Component {
       const { shop, inventory, profile } = this.props
       
     return (
-      <ShopProfile shop={ shop.data[0] } profile={ profile } section="menu">
+      <ShopProfile shop={ shop.data } profile={ profile } section="menu">
         <section id="menu" className="ui basic segment">
             <h2 className="ui header">
                 <div className="content">
