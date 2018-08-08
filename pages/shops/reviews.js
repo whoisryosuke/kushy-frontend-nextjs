@@ -40,7 +40,6 @@ class ShopReviewsPage extends React.Component {
 
   render () {
       const { shop, reviews, profile } = this.props
-      console.log(reviews);
     return (
       <ShopProfile shop={ shop.data } profile={ profile } section="reviews">
         <section id="menu" className="ui basic segment">

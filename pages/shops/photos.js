@@ -40,7 +40,7 @@ class ShopPhotoPage extends React.Component {
 
   render () {
       const { shop, photos, profile } = this.props
-      console.log(photos)
+      (photos)
     return (
       <ShopProfile shop={ shop.data } profile={ profile } section="photos">
         <section id="menu" className="ui basic segment">

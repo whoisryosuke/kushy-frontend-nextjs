@@ -14,10 +14,6 @@ export default ({ header, categories, children }) => {
     const categoryCount = categories && data ? data.length : 1;
     if (categoryCount > 7) { gridCount = 7 } else { gridCount = categoryCount }
     let limit = Math.abs(Number(categoryCount) - gridCount);
-    console.log(gridCount);
-    console.log(limit);
-    console.log(categoryCount);
-    console.log(data.length);
 
     const categoriesLoop = categories && data ? data.splice(gridCount, limit) : [];
 

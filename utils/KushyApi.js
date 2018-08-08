@@ -18,7 +18,6 @@ export default class KushyApi {
      */
     setToken(token) {
         this.headers["Authorization"] = "Bearer " + token;
-        console.log(this.headers)
     }
 
     getState(state) {

@@ -31,9 +31,7 @@ export default class SearchExampleStandard extends Component {
             // let filteredResults = [];
             let response = {
                 }
-                console.log(results)
             results.data.map((item) => {
-                console.log(item)
                 var section = item.section.toUpperCase() || 'Unknown'
 
                     // create new section category
@@ -49,7 +47,6 @@ export default class SearchExampleStandard extends Component {
                         image: item.featured_img,
                         url: item.slug
                     });
-                    console.log(response)
 
                 // filteredResults.push({
                 //     title: result.name,

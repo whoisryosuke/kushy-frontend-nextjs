@@ -11,7 +11,6 @@ class ShopCategoryPage extends React.Component {
         const api = new KushyApi();
 
         let categories, posts
-        console.log(page)
 
         await api.getPostsByCategory(section, category, page)
             .then((results) => (

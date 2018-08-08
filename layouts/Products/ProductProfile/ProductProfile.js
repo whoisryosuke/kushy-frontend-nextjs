@@ -5,7 +5,6 @@ import Main from 'layouts/Main/Main'
 import config from 'config/config'
 
 export default ({ children, product, profile, section }) => {
-    console.log(product)
   return (
     <Main>
         <section className="ProductProfile ui container centered">

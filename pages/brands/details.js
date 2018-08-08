@@ -28,7 +28,6 @@ class BrandDetails extends React.Component {
 
   render () {
       const { brand } = this.props
-      console.log(brand)
     return (
       <BrandProfile brand={ brand } section="details">
         <section id="details" class="ContentBox">
