@@ -19,8 +19,8 @@ export default class ShopMenu extends Component {
      */
     sortCategories(sortedMenu, categoryList)
     {
-        return function (product) {
-            let category = product.categories[0]
+        return function (inventory) {
+            let category = inventory.product.categories.length > 0 ? inventory.product.categories[0] : "Other";
             
             if (sortedMenu[category] === undefined) {
                 sortedMenu[category] = {
@@ -36,11 +36,11 @@ export default class ShopMenu extends Component {
                 categoryList.push(category);
             }
             // add result to category
-            sortedMenu[category].results.push(product);
+            sortedMenu[category].results.push(inventory);
 
             return {
                 [category]: {
-                    product
+                    inventory
                 }
             }
         }
@@ -66,13 +66,15 @@ export default class ShopMenu extends Component {
         {
             let sortedMenu = this.state.categoryList.map(section => {
                 return (
-                <form action="/cart/{{ product.slug }}/add" method="POST">
+                <form key={section} action="/cart/{{ product.slug }}/add" method="POST">
                     <Table padded sortable>
-                        <MenuHeader section={ section.toLowerCase() } />
-                        <MenuContent 
-                            section={ section.toLowerCase() }
-                            data={ this.state.sortedMenu[section].results }
-                        />
+                        <Table.Body>
+                            <MenuHeader section={ section.toLowerCase() } />
+                            <MenuContent 
+                                section={ section.toLowerCase() }
+                                data={ this.state.sortedMenu[section].results }
+                            />
+                        </Table.Body>
                     </Table>
                 </form>
             )})

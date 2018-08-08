@@ -7,10 +7,10 @@ export default ({ data }) => {
     <Table.Row>
         <Table.Cell>
             <h4 className="ui image header">
-                <img src={ data.featured_img } className="ui mini rounded image" />
-                <Link href={`/products/${ data.slug }`}>
+                <img src={ data.product.featured_img } className="ui mini rounded image" />
+                <Link href={`/products/${ data.product.slug }`}>
                     <a className="content">
-                        { data.name }
+                        { data.product.name }
                     </a>
                 </Link>
             </h4>
