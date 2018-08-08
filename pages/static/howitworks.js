@@ -32,7 +32,7 @@ export default () => {
             <div class="ui grid">
               <div class="Timeline_icon three wide computer sixteen wide mobile column">
                 <span>
-                  <img src={`${s3}/Icons/icon-leaf.svg`} alt="This could be you, but you playin." />
+                  <img src={`${s3}Icons/icon-leaf.svg`} alt="This could be you, but you playin." />
                 </span>
               </div>
               <div class="thirteen wide computer sixteen wide mobile column">
@@ -54,7 +54,7 @@ export default () => {
             <div class="ui grid">
               <div class="Timeline_icon three wide computer sixteen wide mobile column">
                 <span>
-                  <img src={`${s3}/Icons/icon-delivery.svg`} alt="This could be you, but you playin." />
+                  <img src={`${s3}Icons/icon-delivery.svg`} alt="This could be you, but you playin." />
                 </span>
               </div>
               <div class="thirteen wide computer sixteen wide mobile column">

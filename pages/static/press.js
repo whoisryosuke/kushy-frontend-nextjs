@@ -24,7 +24,7 @@ export default () => {
             <section class="ui grid centered">
               <div class="seven wide computer sixteen wide mobile column">
                 <figure class="container center">
-                  <img src={`${s3}/Press/press-logos.png`} alt="Discover dispensaries, headshops, doctors, and more with Kushy" class="image" />
+                  <img src={`${s3}Press/press-logos.png`} alt="Discover dispensaries, headshops, doctors, and more with Kushy" class="image" />
                 </figure>
               </div>
               <div class="ui eight wide computer sixteen wide mobile column">
