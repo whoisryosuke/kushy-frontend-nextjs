@@ -111,19 +111,19 @@ You should have all the necessary Semantic UI files, as well as the Kushy overri
 
 ## Components
 
-### <ShopProfile shop={ shop } section="details" />
+### `<ShopProfile shop={ shop } section="details" />`
 
 A layout component that wraps pages to display a shop profile, and any child components are rendered in the layout's content area. Accepts the shop object from the single shop API endpoint. The section props is for the nested tab menu (details/menu/etc) and lets it know which menu item is active.
 
-### <PostLoop section="shops" count="3" />
+### `<PostLoop section="shops" count="3" />`
 
 Container component for displaying Kushy posts from any section, using SUI Cards. It uses Redux to dispatch an action to query API (using the section set in props). If the query was successful and the state is changed, it's mapped to the props. If the props change to a mappable array, we assume it's a successful result and map the results into Card components (see more below).
 
-### <Card section="shops" data={shopObject} />
+### `<Card section="shops" data={shopObject} />`
 
 Component for dynamically displaying the correct card based on the section. Rather than polluting places with `if()` or `switch()` statements, we use this as a universal card picker.
 
-### <HeaderSearch />
+### `<HeaderSearch />`
 
 Component that wraps the SUI Search component. Grabs from the `/search/` API endpoint, sorts results by section, and return results to the SUI component (which does all the magic).
 
