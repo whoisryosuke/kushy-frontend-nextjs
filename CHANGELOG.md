@@ -1,3 +1,17 @@
+# v0.0.10 - August 8, 2018
+
+## :sparkles:
+
+* Product, strain, brand archive + profile
+
+## :hammer:
+
+* Refactored ShopArchive into Archive component for all posts sections
+
+## :bug:
+
+* Added keys to a few map() loops
+
 # v0.0.9 - August 6, 2018
 
 ## Major Changes
