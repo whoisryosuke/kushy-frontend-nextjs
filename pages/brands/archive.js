@@ -1,61 +1,60 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link from 'next/link'
 import ShopArchive from 'layouts/Archive/Archive'
 import KushyApi from 'utils/KushyApi'
 import PostLoop from 'containers/PostLoop'
 
-class ShopArchivePage extends React.Component {
+class BrandArchivePage extends React.Component {
     static async getInitialProps({ reduxStore, req, query: { slug } }) {
         const api = new KushyApi();
 
-        let categories, shops
+        let categories, brands
 
         const params = `?include=categories`
-        await api.getAll('shops', params)
+        await api.getAll('brands', params)
             .then((results) => (
-                shops = results
+                brands = results
             ))
 
-        const categoryParams = '?filter[section]=shop'
+        const categoryParams = '?filter[section]=product'
         await api.getAll('categories', categoryParams)
             .then((results) => (
                 categories = results
             ))
 
         return {
-            shops,
+            brands,
             categories
         }
     }
 
     render() {
-        const { shops, categories } = this.props
+        const { brands, categories } = this.props
 
-        const header = <h1 className="ui header">Browsing "<span className="text red">shops</span>"</h1>
+        const header = <h1 className="ui header">Browsing "<span className="text red">brands</span>"</h1>
 
         return (
             <ShopArchive header={ header } categories={ categories }>
                 <section className="ui container pt3">
-                    <h1 className="ui header">Featured Shops</h1>
+                    <h1 className="ui header">Featured Brands</h1>
                     <section className="ui centered pt1">
-                        <PostLoop data={shops.data} section="shops" count="3" />
+                        <PostLoop data={brands.data} section="brands" count="3" />
                     </section>
                     <section className="ui grid center">
                         <section className="center aligned column">
-                            <a href="/shops/">See more local shops</a>
+                            <a href="/brands/">See more local brands</a>
                         </section>
                     </section>
                 </section>
 
                 <section className="ui container pt3">
-                    <h1 className="ui header">Latest Shops</h1>
+                    <h1 className="ui header">Latest Brands</h1>
                     <section className="ui centered pt1">
-                        <PostLoop data={shops.data} section="shops" count="3" />
+                        <PostLoop data={brands.data} section="brands" count="3" />
                     </section>
                     <section className="ui grid center">
                         <section className="center aligned column">
-                            <a href="/shops/">See more local shops</a>
+                            <a href="/brands/">See more local brands</a>
                         </section>
                     </section>
                 </section>
@@ -71,4 +70,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ShopArchivePage)
+export default connect(mapStateToProps)(BrandArchivePage)

@@ -1,43 +1,43 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link from 'next/link'
-import ShopProfile from 'layouts/Shops/ShopProfile/ShopProfile'
+import BrandProfile from 'layouts/Brands/BrandProfile/BrandProfile'
 import KushyApi from 'utils/KushyApi'
 
-class ShopDetails extends React.Component {
+class BrandDetails extends React.Component {
   static async getInitialProps ({ reduxStore, req, query: { slug } }) {
     const api = new KushyApi();
 
-    let shop
+    let brand
     if(slug)
     {
-        await api.getProfile('shops', slug)
+        await api.getProfile('brands', slug)
             .then((results) => (
-                shop = results.data
+                brand = results.data
             ))
         
-        if(!shop)
+        if(!brand)
         {
             // @todo: redirect
         }
     }
 
     return {
-        shop
+        brand
     }
   }
 
   render () {
-      const { shop } = this.props
+      const { brand } = this.props
+      console.log(brand)
     return (
-      <ShopProfile shop={ shop } section="details">
+      <BrandProfile brand={ brand } section="details">
         <section id="details" class="ContentBox">
-            <h2 class="ui header">Shop Description</h2>
+            <h2 class="ui header">Brand Description</h2>
             <article class="ui segment">
-                { shop.description }    
+                { brand.description ? brand.description : "No description for this brand yet" }    
             </article>
         </section>
-      </ShopProfile>
+      </BrandProfile>
     )
   }
 }
@@ -49,4 +49,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(ShopDetails)
+export default connect(mapStateToProps)(BrandDetails)

@@ -86,25 +86,46 @@ app.prepare()
     /**
      * Brands
      */
+    server.get("/brands/", (req, res) => {
+      return app.render(req, res, "/brands/archive", { params: req.params });
+    });
 
     server.get('/brands/category/:category', (req, res) => {
       return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'brands' })
     })
 
+    server.get('/brands/:slug', (req, res) => {
+      return app.render(req, res, '/brands/details', { slug: req.params.slug })
+    })
+
     /**
      * Strains
      */
+    server.get("/strains/", (req, res) => {
+      return app.render(req, res, "/strains/archive", { params: req.params });
+    });
 
     server.get('/strains/category/:category', (req, res) => {
       return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'strains' })
     })
 
+    server.get('/strains/:slug', (req, res) => {
+      return app.render(req, res, '/strains/details', { slug: req.params.slug })
+    })
+
     /**
      * Products
      */
+    server.get("/products/", (req, res) => {
+      return app.render(req, res, "/products/archive", { params: req.params });
+    });
 
     server.get('/products/category/:category', (req, res) => {
       return app.render(req, res, '/posts/category', { query: req.query, category: req.params.category, section: 'products' })
+    })
+
+    server.get('/products/:slug', (req, res) => {
+      return app.render(req, res, '/products/details', { slug: req.params.slug })
     })
 
     /**

@@ -3,38 +3,38 @@ import Link from 'next/link'
 import { Card, Image, Rating } from 'semantic-ui-react'
 
 export default (props) => {
-    const { data: shop } = props
+    const { data: brand } = props
     return (
-        <Link href={`/shops/${shop.slug}`}>
+        <Link href={`/brands/${brand.slug}`}>
             <Card link className="BrandArchive">
-                <Image src={shop.featured_img} alt={shop.name} />
+                <Image src={brand.featured_img} alt={brand.name} />
                 <Card.Content>
-                    {shop.includes.categories && shop.includes.categories.length > 0 ?
+                    {brand.includes.categories && brand.includes.categories.length > 0 ?
                         <Card.Meta>
-                            {shop.includes.categories[0].category.name}
+                            {brand.includes.categories[0].category.name}
                         </Card.Meta>
                         : ''}
                     <Card.Header>
-                        {shop.name}
+                        {brand.name}
                     </Card.Header>
                     <Card.Description>
-                        {shop.location.address ?
-                            <span>{shop.location.address}
+                        {brand.location.address ?
+                            <span>{brand.location.address}
                                 <br /></span>
                             : ''}
-                        {shop.location.city || shop.location.state || shop.location.postal_code ?
-                            <span>{shop.location.city}, {shop.location.state} {shop.location.postal_code}</span>
+                        {brand.location.city || brand.location.state || brand.location.postal_code ?
+                            <span>{brand.location.city}, {brand.location.state} {brand.location.postal_code}</span>
                             : ''}
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    {shop.distance ?
+                    {brand.distance ?
                         <span className="right floated">
-                            <p className="distance">{Math.round(shop.distance * 100) / 100} miles away</p>
+                            <p className="distance">{Math.round(brand.distance * 100) / 100} miles away</p>
                         </span>
                         : ''}
-                    <Rating icon='star' defaultRating={shop.rating} maxRating={5} disabled />
-                    <h5 className="tiny">{shop.reviews}</h5>
+                    <Rating icon='star' defaultRating={brand.rating} maxRating={5} disabled />
+                    <h5 className="tiny">{brand.reviews}</h5>
                 </Card.Content>
             </Card>
         </Link>
