@@ -1,8 +1,7 @@
 import React from 'react'
+import UserDashboard from 'layouts/User/Dashboard/Dashboard'
 import withAuth from 'utils/withAuth'
 import { userActions } from '../actions';
-
-import Header from 'containers/header';
 
 class Dashboard extends React.Component {
 
@@ -12,8 +11,7 @@ class Dashboard extends React.Component {
     }
    render() {
      return (   
-        <div>
-          <Header />
+        <UserDashboard user={this.props.user}>
           <main>
               <h3>
                 Recent Events
@@ -22,7 +20,7 @@ class Dashboard extends React.Component {
                 List of recent events here
               </p>
           </main> 
-        </div>
+        </UserDashboard>
      )
    }
 }
