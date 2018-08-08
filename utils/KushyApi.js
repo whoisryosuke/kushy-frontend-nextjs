@@ -63,7 +63,7 @@ export default class KushyApi {
     }
 
     getProfile(section, slug) {
-        const url = `${this.domain}/${section}/?filter[slug]=${slug}&include=categories`
+        const url = `${this.domain}/${section}/slug/${slug}`
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
