@@ -1,14 +1,14 @@
 # Kushy Frontend
 
-The frontend for Kushy.net implemented in NextJS. 
+The frontend for Kushy.net implemented as a SSR React app using NextJS. 
 
 ## Tools
 
-* NextJS
-* ReactJS
-* Semantic UI
-* NodeJS
-* Express
+* [NextJS](https://nextjs.org/)
+* [ReactJS](https://reactjs.org/)
+* [Kushy Design System](https://www.npmjs.com/package/kushy-design)
+* [NodeJS](https://nodejs.org/)
+* [Express](http://expressjs.com/)
 * [Kushy API](http://kushy.net/developers/)
 
 ## Development
@@ -29,6 +29,8 @@ I use the Semantic UI CSS framework and React component system. My Semantic UI C
 
 There you'll insert your Kushy API credentials [you can find by creating an app here](https://kushy.net/developers/apps). And you can set an `APP_KEY`, which will be used as a salt to create encrypted hashes on behalf of your app.
 
+3. Update the login URL in `config/config.js` file with your client ID and callback URL. If you need credentials, spin up the dev server and run `php artisan passport:client` and fill out the prompts.
+
 ### Running Server
 
 `npm run dev`
@@ -37,7 +39,9 @@ Deploys an Express server, configured in the `server.js` file in project root, a
 
 ### Admin / Organizer Access
 
-Spin up a development server, create a new account, and use those login details in this app. `AuthService` class assumes dev server is located at `http://localhost/`, but also accepts any URL when you make a "new" class (`new AuthService('http://localhost:4849')`). See the [seshsource-api](https://github.com/whoisryosuke/seshsource-api) repo for more details.
+Spin up a development server, create a new account, and use those login details in this app. 
+
+> `KushyApi` class is used to access the API. The class assumes dev server is located at `http://localhost/`, but also accepts any URL when you make a "new" class (`new KushyApi('http://localhost:4849')`).
 
 ### Authentication
 
@@ -127,6 +131,10 @@ Component for dynamically displaying the correct card based on the section. Rath
 
 Component that wraps the SUI Search component. Grabs from the `/search/` API endpoint, sorts results by section, and return results to the SUI component (which does all the magic).
 
+### `<PaginationMenu total="10" active"1" redirect="http://kushy.net/brands/category/flowers" />`
+
+Wrapper for SUI React's Pagination component. Clicking on buttons uses NextJS Router to redirect to the correct page using the redirect URL in props.
+
 ## Todo
 
 Focus on creating all routes SSR first (e.g. pagination through query params), then optimize later by making Redux components that load data dynamically (e.g. clicking next page tells postloop component to query next page without hard-loading a new page).
@@ -147,6 +155,13 @@ Focus on creating all routes SSR first (e.g. pagination through query params), t
 * [✅] - Shop profile - Photos route
 * [✅] - Shop profile - Reviews route
 * [✅] - Swap search in header with SUI React search component (to enable autocomplete)
+* [✅] - Implement CDN for static images (preferably DigitalOcean Spaces)
+* [✅] - Brands archive - (layout + details)
+* [✅] - Products archive - (layout + details)
+* [✅] - Strains archive - (layout + details)
+* [✅] - Brands profile - (layout + details)
+* [✅] - Products profile - (layout + details)
+* [✅] - Strains profile - (layout + details)
 
 
 ### High Priority
@@ -166,7 +181,6 @@ Focus on creating all routes SSR first (e.g. pagination through query params), t
 
 ### Low Priority
 
-* [] - Implement CDN for static images (preferably DigitalOcean Spaces)
 * [] - Socal Login with Twitter, Facebook, Google+
 * [] - Shop profile - Menu - Search/Filter
 * [] - Refactor SUI HTML/CSS into ReactJS
