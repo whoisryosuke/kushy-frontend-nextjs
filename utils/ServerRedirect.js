@@ -1,3 +1,5 @@
+import Router from 'next/router'
+
 export default (location, res = null) => {
   if (res) {
     res.writeHead(302, {
