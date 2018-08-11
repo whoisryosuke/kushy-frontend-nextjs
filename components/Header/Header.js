@@ -22,7 +22,7 @@ class Header extends React.Component {
   handleLogin = e => Router.push(config.kushyLogin);
 
   render() {
-    const { user } = this.props;
+    const { profile } = this.props;
     const { activeItem } = this.state;
     // console.log(user);
 
@@ -44,7 +44,7 @@ class Header extends React.Component {
         </Menu.Item>
 
         <Menu.Menu position="right">
-          {user ? (
+          {profile ? (
             <Dropdown item trigger={userIcon}>
               <Dropdown.Menu>
                 <Link href={"/dashboard/"} passHref>
@@ -69,8 +69,8 @@ class Header extends React.Component {
 }
 
 function mapStateToProps (state) {
-  const { authentication: { user } } = state
-  return { user }
+  const { users: { profile } } = state
+  return { profile };
 }
 
 export default connect(mapStateToProps)(Header);

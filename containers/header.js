@@ -10,7 +10,6 @@ class HeaderContainer extends Component {
   {
     const { dispatch, token } = this.props
     dispatch(userActions.getUser(token))
-    console.log('grabbing user')
   }
 
   render() {
