@@ -38,7 +38,7 @@ export default class AuthService {
     requestProfile(token) {
         this.setToken(token)
          // Get a token
-         return this.fetch(`${this.domain}/api/user`, {
+         return this.fetch(`${this.domain}/api/v1/user`, {
              method: 'GET'
          }).then(res => {
              this.setProfile(res)
