@@ -11,7 +11,6 @@ const session = require('express-session')
 var csrfProtection = csrf({
   cookie: true
 })
-var parseForm = bodyParser.urlencoded({ extended: false })
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -24,6 +23,34 @@ function jsonErrorCheck(data) {
     return data.error
   }
   return data
+}
+
+async function queryApi(endpoint, method, token, formData = null) {
+
+  const credentials = {
+    method: method,
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    }
+  }
+
+  if(formData) {
+    credentials.body = JSON.stringify(formData)
+  }
+  console.log('user token')
+  console.log(token)
+  
+  console.log(`http://localhost/api/v1/${endpoint}/`)
+  
+  return await fetch(`http://localhost/api/v1/${endpoint}/`, credentials)
+    .then(r => r.json())
+    .then(data => jsonErrorCheck(data))
+    .then(data => {
+      console.log('review sent, response below')
+      console.log(data)
+      return data
+    });
 }
 
 function loggedIn(req, res, next) {
@@ -69,7 +96,7 @@ app.prepare()
   .then(() => {
     const server = express()
     const middlewares = [
-      bodyParser.urlencoded(),
+      bodyParser.json(),
       cookieParser('kushy-frontend'),
       csrfProtection,
       session({
@@ -176,7 +203,37 @@ app.prepare()
     })
     
     server.get('/shops/:slug/reviews', (req, res) => {
-      return app.render(req, res, '/shops/reviews', { slug: req.params.slug })
+      return app.render(req, res, '/shops/reviews', { slug: req.params.slug, csrf: req.csrfToken() })
+    })
+    
+    /**
+     * New reviews form requests are sent here and redirected to Kushy API
+     * Acts as a middleman to check CSRF and validate if necessary
+     * 
+     * @method POST
+     */
+    server.post('/reviews/', async (req, res) => {
+      const form = {
+        post_id: req.body.post_id,
+        rating: req.body.rating,
+        review: req.body.review
+      }
+
+      console.log(form)
+
+      console.log(req.cookies["kushyFToken"])
+      let newReview
+      if (req.cookies["kushyFToken"]) {
+        newReview = await queryApi("reviews", "POST", req.cookies["kushyFToken"], form);
+      } else {
+        newReview = {
+          error: {
+            message: "User not logged in, who ate the cookies?"
+          }
+        }
+      }
+      
+      return res.json(newReview);
     })
 
     server.get('/shops/:slug/menu', (req, res) => {
@@ -212,14 +269,14 @@ app.prepare()
           if (req.cookies['kushyFToken']) {
             res.clearCookie('kushyFToken')
           }
-          
+
           res.cookie('kushyFToken', data.access_token, {
             maxAge: 900000,
             httpOnly: true
           });
-
+          
           // store object in session with encrypted hash + real token
-          // req.session.token = data.access_token
+          req.session.token = data.access_token
 
           return res.redirect('/dashboard')
         });
