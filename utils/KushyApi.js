@@ -1,5 +1,6 @@
 import queryString from 'query-string';
 import config from 'config/config'
+import { getCookie } from './Cookies';
 
 export default class KushyApi {
     constructor() {
@@ -9,6 +10,15 @@ export default class KushyApi {
         this.getState = this.getState.bind(this)
         this.getShopsByLocation = this.getShopsByLocation.bind(this)
         this.getAll = this.getAll.bind(this)
+    }
+
+    /**
+     * Grabs token from cookies and applies to token
+     * 
+     * @param {object} ctx 
+     */
+    getToken(ctx = null) {
+        this.setToken(getCookie("kushyFToken", ctx));
     }
 
     /**
@@ -102,6 +112,17 @@ export default class KushyApi {
         }).then(res => {
             return Promise.resolve(res)
         })
+    }
+
+    postReview(formData) {
+        const url = `${this.domain}/reviews/`
+        return this.fetch(url, {
+          method: "POST",
+          body: JSON.stringify(formData)
+        }).then(res => {
+            console.log(res)
+          return Promise.resolve(res);
+        });
     }
 
     /**
