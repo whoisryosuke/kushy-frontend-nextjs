@@ -154,6 +154,7 @@ Focus on creating all routes SSR first (e.g. pagination through query params), t
 * [✅] - Shop profile - Menu
 * [✅] - Shop profile - Photos route
 * [✅] - Shop profile - Reviews route
+* [✅] - Shop profile - Add Review functionality
 * [✅] - Swap search in header with SUI React search component (to enable autocomplete)
 * [✅] - Implement CDN for static images (preferably DigitalOcean Spaces)
 * [✅] - Brands archive - (layout + details)
@@ -171,7 +172,6 @@ Focus on creating all routes SSR first (e.g. pagination through query params), t
 * [] - Shop profile - Breadcrumbs on top
 * [] - Shop profile - Hours of operation in sidebar
 * [] - Shop profile - Open/Close working in header
-* [] - Shop profile - Add Review functionality
 * [] - Shop profile - Bookmark functionality
 * [] - Shop profile - Claim listing button
 * [] - User dashboard page
@@ -184,3 +184,5 @@ Focus on creating all routes SSR first (e.g. pagination through query params), t
 * [] - Socal Login with Twitter, Facebook, Google+
 * [] - Shop profile - Menu - Search/Filter
 * [] - Refactor SUI HTML/CSS into ReactJS
+* [] - Loading state for any dynamic components
+* [] - Server side caching using `lru-cache` [see](https://github.com/zeit/next.js/pull/497/commits/be71b8fb3f5e07a63483e4546991a67b4af9d3b3)
