@@ -43,9 +43,9 @@ class ShopReviewsPage extends React.Component {
   }
 
   render () {
-    const { csrf, shop, reviews, profile, loggedIn } = this.props
+    const { csrf, shop, reviews, loggedIn } = this.props
     return (
-      <ShopProfile shop={ shop } profile={ profile } section="reviews">
+        <ShopProfile shop={shop} loggedIn={ loggedIn } section="reviews">
 
             {loggedIn ? 
             <div>

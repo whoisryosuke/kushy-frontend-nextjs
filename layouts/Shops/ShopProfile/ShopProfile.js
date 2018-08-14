@@ -4,7 +4,7 @@ import Main from 'layouts/Main/Main'
 
 import config from 'config/config'
 
-export default ({ children, shop, profile, section }) => {
+export default ({ children, shop, loggedIn, section }) => {
   return (
     <Main>
         <section className="ShopProfile ui container centered">
@@ -46,7 +46,7 @@ export default ({ children, shop, profile, section }) => {
                                     </aside>
                                 </section>
                                 <section className="ShopHeader__btns eight wide computer sixteen wide mobile column">
-                                    { profile ?
+                                    { loggedIn ?
                                         <Link href={`/shops/${ shop.slug }/reviews`}>
                                             <a className="ui button icon red">
                                                 <i className="icon comment"></i>
