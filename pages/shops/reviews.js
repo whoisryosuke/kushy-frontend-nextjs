@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Router from 'next/router'
-import Link from 'next/link'
+import { compose } from 'recompose'
 import ShopProfile from 'layouts/Shops/ShopProfile/ShopProfile'
 import KushyApi from 'utils/KushyApi'
+import withPageCookie from "utils/withPageCookie";
 
 import ReviewsLoop from 'components/Reviews/ReviewsLoop/ReviewsLoop'
 import NewReview from "components/Reviews/NewReview/NewReview";
@@ -25,12 +26,12 @@ class ShopReviewsPage extends React.Component {
             .then((results) => (
                 reviews = results
             ))
-    }
+      }
 
     return {
         csrf,
         shop,
-        reviews
+        reviews,
     }
   }
   constructor(props)
@@ -42,15 +43,18 @@ class ShopReviewsPage extends React.Component {
   }
 
   render () {
-    const { csrf, shop, reviews, profile } = this.props
-    console.log(reviews)
+    const { csrf, shop, reviews, profile, loggedIn } = this.props
     return (
       <ShopProfile shop={ shop } profile={ profile } section="reviews">
-        
-        <h2 className="ui header">Leave a review</h2>
-        <section id="new" className="ui segment">
-            <NewReview id={ shop.id } csrf={ csrf } />
-        </section>
+
+            {loggedIn ? 
+            <div>
+                <h2 className="ui header">Leave a review</h2>
+                <section id="new" className="ui segment">
+                    <NewReview id={ shop.id } csrf={ csrf }  />
+                </section>
+            </div>
+            : ''}
 
         <h2 className="ui header">
             <div className="content">
@@ -75,4 +79,7 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(ShopReviewsPage)
+export default compose(
+  withPageCookie,
+  connect(mapStateToProps)
+)(ShopReviewsPage);
