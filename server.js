@@ -272,7 +272,8 @@ app.prepare()
 
           res.cookie('kushyFToken', data.access_token, {
             maxAge: 900000,
-            httpOnly: true
+            expires: new Date(Date.now() + 9999999),
+            httpOnly: false
           });
           
           // store object in session with encrypted hash + real token
