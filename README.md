@@ -15,9 +15,9 @@ The frontend for Kushy.net implemented as a SSR React app using NextJS.
 
 This app is built on top of the NextJS app framework, using an NodeJS/Express server for dynamic routing, and ReactJS for our view layer. I use the [Kushy API](http://kushy.net/developers/) to provide all the data (shops, products, etc), as well as for user authentication through an OAuth 2 flow.
 
-NextJS is setup to use LESS + CSS (although I'll be switching soon to SASS), with a special Webpack config to include any media imported in the CSS. You can configure all this on `next.config.js`.
+NextJS is setup to use CSS, as well as a special Webpack config to include any media imported in the CSS. You can configure all this on `next.config.js`.
 
-I use the Semantic UI CSS framework and React component system. My Semantic UI CSS setup should be included in the repo if you need to make any changes and have to rebuild the master CSS file (see Semantic UI section for instructions). Preferably use components from [Semantic UI React](https://react.semantic-ui.com/collections/menu), even though HTML with proper SUI class names will work fine.
+I use the Kushy Design System, which is built on the Semantic UI CSS framework and React component system. My Semantic UI CSS setup should be included in the [kushy-design](https://github.com/kushyapp/kushy-design) repo if you need to make any changes and have to rebuild the master CSS file (see Semantic UI section for instructions). Preferably use components from [Semantic UI React](https://react.semantic-ui.com/collections/menu), even though HTML with proper SUI class names will work fine for simpler components.
 
 ### New users:
 
@@ -45,24 +45,37 @@ Spin up a development server, create a new account, and use those login details 
 
 ### Authentication
 
-Users are authenticated through the Kushy API. To login or register, redirect the user to the login URL (specified in the config as `config.kushyLogin`). The user will be redirected to the Kushy API. There the user will be prompted to login/register if they're not, and accept/deny the app. Once they accept, they're redirected back to our callback (`theserver.com/token`) where we do the last handshake to grab the JWT. It's stored in the cookies, and the user is redirected to the user dashboard.
+Users are authenticated through the Kushy API and it's OAuth 2 protocol. 
+
+To login or register, redirect the user to the login URL (specified in the config as `config.kushyLogin`). The user will be redirected to the Kushy API. There the user will be prompted to login/register if they're not, and accept/deny the app. Once they accept, they're redirected back to our callback (`theserver.com/token`) where we do the last handshake to grab the JWT. It's stored in the cookies, and the user is redirected to the user dashboard.
+
+To authenticate on private pages like the user dashboard, we query the API using the cookie to verify the user (*using a HOC, see below*). Otherwise, public components with private functionality are hidden based on the presence of the cookie (*using a HOC, see further below*).
 
 #### Protected pages
 
 Wrap any pages that require a login in the `withAuth(ProtectedPageComponent)` HOC. This checks the cookies for a token (server or client side) and allows the page component to load if it finds one.
 
-### Semantic UI
+#### Checking if user is logged in
 
-#### Installation
+If it's a page component that doesn't have to be protected, wrap it in the `withPageCookie()` HOC:
 
-You should have all the necessary Semantic UI files, as well as the Kushy overrides. Make sure **Gulp** is installed if you want to build or edit any CSS.
+```js
+withPageCookie(Component)
+```
 
-> We're working on a separate NPM module for a Semantic UI package with all the Kushy overrides for easier access.
+If it's a component that needs to know if the user is logged in (e.g. the Header's login vs user dropdown) you wrap your component in the `withCookie()` HOC:
 
-#### CSS
+```js
+withCookie(Component)
+```
 
-* You can either directly import the LESS modules from `semantic/src/definitions/elements/header.less`
-* Or you can build the entire Semantic UI CSS file (`cd semantic && gulp build`) and import it in `pages/_document.js`.
+You'll find `loggedIn` and `token` in your wrapped component's props. `loggedIn` is a boolean, and `token` will be the JWT.
+
+#### Getting user access token (JWT)
+
+For authenticated client-side requests, you'll need to fetch using the JWT in your authorization headers. 
+
+Use the `withPageCookie()` and `withCookie()` HOCs (*see above*) to propogate your component's props with the JWT. Then you can use `this.props.token` in any `fetch()` requests.
 
 ### Deployment
 
