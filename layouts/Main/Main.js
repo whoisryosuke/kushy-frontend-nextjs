@@ -1,5 +1,5 @@
-import Header from '../../containers/header'
-import Footer from '../../components/Footer/Footer'
+import Header from 'components/Header/Header'
+import Footer from 'components/Footer/Footer'
 
 export default ({ children }) => (
   <div>
