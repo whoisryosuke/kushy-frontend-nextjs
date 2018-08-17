@@ -88,6 +88,7 @@ Use the `withPageCookie()` and `withCookie()` HOCs (*see above*) to propogate yo
 | Initial commit             | :tada: `:tada:`                               |
 | Version tag                | :bookmark: `:bookmark:`                       |
 | New feature                | :sparkles: `:sparkles:`                       |
+| New component              | :star: `:star:`                               |
 | Bugfix                     | :bug: `:bug:`                                 |
 | Metadata                   | :card_index: `:card_index:`                   |
 | Documentation              | :books: `:books:`                             |
