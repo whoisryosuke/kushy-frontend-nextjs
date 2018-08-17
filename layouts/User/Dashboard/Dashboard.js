@@ -2,6 +2,7 @@ import React from 'react'
 import Main from 'layouts/Main/Main'
 import config from 'config/config'
 
+import './Dashboard.css'
 import DashboardMenu from './Menu'
 
 export default ({ user, children }) => {
@@ -56,7 +57,7 @@ export default ({ user, children }) => {
 
                   <DashboardMenu selected="activity" />
 
-                  <main id="UserContent">
+                  <main class="UserProfile__Content">
                       
                       { children }
 
