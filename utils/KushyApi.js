@@ -155,6 +155,21 @@ export default class KushyApi {
         })
     }
 
+    /**
+     * Gets user profile data 
+     * (requires a JWT token set)
+     * 
+     * @returns {Promise} Resolved promise of JSONifed results
+     */
+    getUserActivity(page = 1, include = 'bookmarks,reviews,post') {
+        const url = `${this.domain}/activity/?page=${page}&include=${include}`;
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
     async fetch(url, options) {
         // performs api calls sending the required authentication headers
         const headers = this.headers
