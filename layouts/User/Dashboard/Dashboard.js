@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Main from 'layouts/Main/Main'
 import config from 'config/config'
 
 import './Dashboard.css'
 import DashboardMenu from './Menu'
 
-export default ({ user, children }) => {
+const UserDashboard = ({ section, user, children }) => {
   const s3 = config.assets.root + config.assets.site;
 
   return (
@@ -55,7 +56,7 @@ export default ({ user, children }) => {
 
                 <section className="UserProfile__Main eleven wide computer sixteen wide mobile column">
 
-                  <DashboardMenu selected="activity" />
+                  <DashboardMenu selected={ section } />
 
                   <main className="UserProfile__Content">
                       
@@ -69,3 +70,13 @@ export default ({ user, children }) => {
     </Main>
   )
 }
+
+UserDashboard.propTypes = {
+    section: PropTypes.string
+}
+
+UserDashboard.defaultProps =  {
+    section: 'activity'
+}
+
+export default UserDashboard
