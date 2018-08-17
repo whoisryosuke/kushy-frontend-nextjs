@@ -170,6 +170,21 @@ export default class KushyApi {
         })
     }
 
+    /**
+     * Gets user profile data 
+     * (requires a JWT token set)
+     * 
+     * @returns {Promise} Resolved promise of JSONifed results
+     */
+    getUserReviews(page = 1, include = 'post') {
+        const url = `${this.domain}/reviews/user/?page=${page}&include=${include}`;
+        return this.fetch(url, {
+            method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
     async fetch(url, options) {
         // performs api calls sending the required authentication headers
         const headers = this.headers
