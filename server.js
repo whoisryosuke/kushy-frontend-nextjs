@@ -38,10 +38,6 @@ async function queryApi(endpoint, method, token, formData = null) {
   if(formData) {
     credentials.body = JSON.stringify(formData)
   }
-  console.log('user token')
-  console.log(token)
-  
-  console.log(`http://localhost/api/v1/${endpoint}/`)
   
   return await fetch(`http://localhost/api/v1/${endpoint}/`, credentials)
     .then(r => r.json())
@@ -108,6 +104,10 @@ app.prepare()
 
     server.get('/dashboard', (req, res) => {
       return app.render(req, res, '/dashboard')
+    })
+
+    server.get('/dashboard/reviews', (req, res) => {
+      return app.render(req, res, '/user/reviews')
     })
 
 
