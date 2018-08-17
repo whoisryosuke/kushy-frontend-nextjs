@@ -57,7 +57,7 @@ export default ({ user, children }) => {
 
                   <DashboardMenu selected="activity" />
 
-                  <main class="UserProfile__Content">
+                  <main className="UserProfile__Content">
                       
                       { children }
 
