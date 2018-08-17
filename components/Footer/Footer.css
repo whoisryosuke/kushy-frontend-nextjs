@@ -1,0 +1,10 @@
+@media only screen and (min-width: 991px) {
+  .SiteFooter {
+    position: absolute !important;
+    bottom: 0;
+  }
+
+  body {
+    padding-bottom: 300px !important;
+  }
+}

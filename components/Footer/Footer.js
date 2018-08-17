@@ -1,6 +1,8 @@
 import React from 'react'
 import config from "config/config";
 
+import './Footer.css'
+
 export default () => {
   const s3 = config.assets.root + config.assets.site;
   return (
