@@ -110,6 +110,10 @@ app.prepare()
       return app.render(req, res, '/user/reviews')
     })
 
+    server.get('/dashboard/settings', (req, res) => {
+      return app.render(req, res, '/user/settings')
+    })
+
 
     /**
      * Static routes

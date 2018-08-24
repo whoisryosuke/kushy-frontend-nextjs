@@ -7,9 +7,6 @@ export default class KushyApi {
         this.domain = config.kushyApiUrl
         this.headers = { Accept: "application/json", "Content-Type": "application/json" };
         this.fetch = this.fetch.bind(this)
-        this.getState = this.getState.bind(this)
-        this.getShopsByLocation = this.getShopsByLocation.bind(this)
-        this.getAll = this.getAll.bind(this)
     }
 
     /**
@@ -176,6 +173,24 @@ export default class KushyApi {
         const url = `${this.domain}/reviews/user/?page=${page}&include=${include}`;
         return this.fetch(url, {
             method: 'GET'
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
+
+    /**
+     * Updates user account settings with form data
+     * 
+     * @param {int} id
+     * @param {object} formData
+     * @returns {Promise} Resolved promise of JSONifed results
+     */
+    postUserAccountSettings = (id, formData) => {
+        const url = `${this.domain}/users/${id}`;
+        return this.fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(formData)
         }).then(res => {
             return Promise.resolve(res)
         })
