@@ -40,7 +40,7 @@ const PostCard = (props) => {
 
 }
 
-PostCard.PropTypes = {
+PostCard.propTypes = {
   section: PropTypes.string.isRequired
 };
 
