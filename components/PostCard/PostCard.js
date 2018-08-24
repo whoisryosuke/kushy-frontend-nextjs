@@ -18,15 +18,15 @@ const PostCard = (props) => {
   {
 
       case 'brands':
-        card = <BrandCard data={ data } />
+      card = <BrandCard  {...props} />
         break;
 
       case 'shops':
-        card = <ShopCard data={ data } />
+      card = <ShopCard  {...props} />
         break;
 
       case 'products':
-        card = <ProductCard data={ data } />
+      card = <ProductCard  {...props} />
         break;
 
       default:
