@@ -33,14 +33,14 @@ class DashboardReviews extends React.Component {
      const reviewsItems = reviews && reviews.data.length > 0 ? reviews.data.map((review) => <ReviewFeedItem review={ review } user={ user } postName />) : ''
      return (   
         <UserDashboard section="reviews" user={this.props.user}>
-          <article id="reviews" class="ui segment">
+          <article id="reviews" className="ui segment">
               { reviewsItems ? 
                   
-                  <section class="ui feed">
+                  <section className="ui feed">
                     { reviewsItems }
                   </section>
               :
-                <section class="content">
+                <section className="content">
                   <p>No reviews found</p>
                   <p>
                       <em>
