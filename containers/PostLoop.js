@@ -9,7 +9,7 @@ import PostCard from '../components/PostCard/PostCard'
 export class PostLoop extends Component {
   static propTypes = {
     section: PropTypes.string,
-    count: PropTypes.number
+    count: PropTypes.string
   }
   
   componentDidMount()
