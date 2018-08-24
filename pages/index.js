@@ -67,13 +67,13 @@ class Index extends React.Component {
     const { profile } = this.props
 
     const cities = this.state.cities && this.state.states ? this.state.cities.slice(0, 7).map((city) => (
-              <a href={`/${ city.slug }/${ this.state.states.slug}`} className="item">
+              <a href={`/${ city.slug }/${ this.state.states.slug}`} className="item" key={ city.slug }>
                   { city.title }
               </a>
             )) : '';
 
     const productCategories = this.state.categories ? this.state.categories.data.map((category) => (
-              <a href={`/products/category/${ category.name }`} className="item">
+              <a href={`/products/category/${ category.name }`} className="item" key={ category.name }>
                   { category.name }
               </a>)) : '';
 
