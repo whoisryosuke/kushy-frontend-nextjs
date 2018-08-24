@@ -17,7 +17,7 @@ export default class KushyApi {
      * 
      * @param {object} ctx 
      */
-    getToken(ctx = null) {
+    getToken = (ctx = null) => {
         this.setToken(getCookie("kushyFToken", ctx));
     }
 
@@ -26,11 +26,11 @@ export default class KushyApi {
      * 
      * @param {string} token - JWT token
      */
-    setToken(token) {
+    setToken = (token) => {
         this.headers["Authorization"] = "Bearer " + token;
     }
 
-    getState(state) {
+    getState = (state) => {
         return this.fetch(`${this.domain}/states/${state}`, {
             method: 'GET'
         }).then(res => {
@@ -38,8 +38,7 @@ export default class KushyApi {
         })
     }
 
-    getAll(section, params = null)
-    {
+    getAll = (section, params = null) => {
         const url = params ? `${this.domain}/${section}/${params}` : `${this.domain}/${section}/`
         return this.fetch(url, {
             method: 'GET'
@@ -48,8 +47,7 @@ export default class KushyApi {
         })
     }
 
-    getShopsByLocation(lat, lng)
-    {
+    getShopsByLocation = (lat, lng) => {
         return this.fetch(`${this.domain}/location/${lat}/${lng}`, {
             method: 'GET'
         }).then(res => {
@@ -57,8 +55,7 @@ export default class KushyApi {
         })
     }
 
-    getPostsByCategory(section, category, page = 1)
-    {
+    getPostsByCategory = (section, category, page = 1) => {
         let params = {}
         params.page = page
 
@@ -72,8 +69,7 @@ export default class KushyApi {
         })
     }
 
-    search(field, search)
-    {
+    search = (field, search) => {
         const url = `${this.domain}/search/posts/?filter[${field}]=${search}`
         return this.fetch(url, {
             method: 'GET'
@@ -82,7 +78,7 @@ export default class KushyApi {
         })
     }
 
-    getProfile(section, slug) {
+    getProfile = (section, slug) => {
         const url = `${this.domain}/${section}/slug/${slug}`
         return this.fetch(url, {
             method: 'GET'
@@ -91,7 +87,7 @@ export default class KushyApi {
         })
     }
 
-    getInventory(slug) {
+    getInventory = (slug) => {
         const url = `${this.domain}/inventory/menu/${slug}`
         return this.fetch(url, {
             method: 'GET'
@@ -105,7 +101,7 @@ export default class KushyApi {
      * 
      * @param {string - UUID} id 
      */
-    getReviews(id) {
+    getReviews = (id) => {
         const url = `${this.domain}/reviews/post/${id}`
         return this.fetch(url, {
             method: 'GET'
@@ -114,7 +110,7 @@ export default class KushyApi {
         })
     }
 
-    postReview(formData) {
+    postReview = (formData) => {
         const url = `${this.domain}/reviews/`
         return this.fetch(url, {
           method: "POST",
@@ -131,7 +127,7 @@ export default class KushyApi {
      * @param {string} UUID of post 
      * @returns {Promise} Resolved promise of JSONifed results
      */
-    getPhotos(id) {
+    getPhotos = (id) => {
         const url = `${this.domain}/photos/post/${id}`
         return this.fetch(url, {
             method: 'GET'
@@ -146,8 +142,8 @@ export default class KushyApi {
      * 
      * @returns {Promise} Resolved promise of JSONifed results
      */
-    getUser() {
-        const url = `${this.domain}/user/`
+    getUser = () => {
+        const url = `${this.domain}/users/profile`
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
@@ -161,7 +157,7 @@ export default class KushyApi {
      * 
      * @returns {Promise} Resolved promise of JSONifed results
      */
-    getUserActivity(page = 1, include = 'bookmarks,reviews,post') {
+    getUserActivity = (page = 1, include = 'bookmarks,reviews,post') => {
         const url = `${this.domain}/activity/?page=${page}&include=${include}`;
         return this.fetch(url, {
             method: 'GET'
@@ -176,7 +172,7 @@ export default class KushyApi {
      * 
      * @returns {Promise} Resolved promise of JSONifed results
      */
-    getUserReviews(page = 1, include = 'post') {
+    getUserReviews = (page = 1, include = 'post') => {
         const url = `${this.domain}/reviews/user/?page=${page}&include=${include}`;
         return this.fetch(url, {
             method: 'GET'
