@@ -225,7 +225,7 @@ class Index extends React.Component {
           <section className="ui red inverted segment cta cta--slim sixteen wide column" style={{ backgroundImage: "url({{ asset('img/Backgrounds/featured-leaves1.jpg') }}) !important", backgroundSize:'cover'}}>
               <section className="cta__padding ui container">
                   <h1 className="ui header inverted">Get the latest deals and news in you inbox</h1>
-                  <form action="https://kushy.us17.list-manage.com/subscribe/post?u=6d8631d309db2ed0eae4958a2&amp;id=70b93af4e4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="ui form validate inverted" target="_blank" novalidate>
+                  <form action="https://kushy.us17.list-manage.com/subscribe/post?u=6d8631d309db2ed0eae4958a2&amp;id=70b93af4e4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="ui form validate inverted" target="_blank" noValidate>
                       <div id="mc_embed_signup_scroll" className="fields">
                       
                           <div className="twelve wide field">
@@ -236,7 +236,7 @@ class Index extends React.Component {
                               <div className="response" id="mce-success-response" style={{display:'none'}}></div>
                           </div>    
                           <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
-                              <input type="text" name="b_6d8631d309db2ed0eae4958a2_70b93af4e4" tabindex="-1" value="" />
+                              <input type="text" name="b_6d8631d309db2ed0eae4958a2_70b93af4e4" tabIndex="-1" value="" />
                           </div>
                           <div className="four wide field">
                               <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="ui button red fluid" />
