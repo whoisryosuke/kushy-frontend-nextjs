@@ -8,7 +8,6 @@ import PostCard from '../components/PostCard/PostCard'
 
 export class PostLoop extends Component {
   static propTypes = {
-    prop: PropTypes,
     section: PropTypes.string,
     count: PropTypes.number
   }
