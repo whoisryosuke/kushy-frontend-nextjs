@@ -14,21 +14,6 @@ export default class SearchExampleStandard extends Component {
     this.resetComponent()
   }
 
-    debounce = (func, wait = 100) => {
-        console.log('running debounce');
-
-        let timeout;
-        return function (...args) {
-            console.log('1 timing out function')
-
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                console.log('timing out function')
-                func.apply(this, args);
-            }, wait);
-        };
-    }
-
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
   queryApi = () => {
