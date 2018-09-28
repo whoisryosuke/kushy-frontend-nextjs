@@ -32,10 +32,8 @@ class DashboardSettings extends React.Component {
       const { facebook, instagram, tumblr, twitter } = user.social
     }
 
-
-    console.log(user)
     return (
-      <UserDashboard section="reviews" user={this.props.user}>
+      <UserDashboard section="reviews" user={user}>
         <UserSettings user={ user } />
       </UserDashboard>
     )
