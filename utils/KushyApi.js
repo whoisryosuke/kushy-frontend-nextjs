@@ -113,7 +113,6 @@ export default class KushyApi {
           method: "POST",
           body: JSON.stringify(formData)
         }).then(res => {
-            console.log(res)
           return Promise.resolve(res);
         });
     }
@@ -194,6 +193,40 @@ export default class KushyApi {
         }).then(res => {
             return Promise.resolve(res)
         })
+    }
+
+
+    createBookmark = (user_id, post_id) => {
+        const url = `${this.domain}/bookmarks/`;
+        return this.fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                post_id,
+                user_id
+            })
+        }).then(res => {
+            return Promise.resolve(res)
+        })
+    }
+
+    checkBookmark = (user_id, post_id) => {
+        const url = `${this.domain}/bookmarks/?filter[post_id]=${post_id}&user_id=${user_id}`;
+        
+        return this.fetch(url, {
+          method: "GET"
+        }).then(res => {
+          return Promise.resolve(res);
+        });
+    }
+
+    removeBookmark = (id) => {
+        const url = `${this.domain}/bookmarks/${id}`;
+        
+        return this.fetch(url, {
+            method: "DELETE"
+        }).then(res => {
+          return Promise.resolve(res);
+        });
     }
 
     async fetch(url, options) {

@@ -2,9 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 import Main from 'layouts/Main/Main'
 
+import BookmarkButton from "components/User/BookmarkButton/BookmarkButton";
+
 import config from 'config/config'
 
-export default ({ children, shop, loggedIn, section }) => {
+export default ({ children, shop, loggedIn, section, user }) => {
+    console.log(shop)
   return (
     <Main>
         <section className="ShopProfile ui container centered">
@@ -107,6 +110,7 @@ export default ({ children, shop, loggedIn, section }) => {
                 <section className="ShopProfile__sidebar four wide computer sixteen wide mobile column">
                     
                     {/* @include('components.buttons.bookmark', ['section' => 'shops', 'data' => shop, 'bookmarked' => userBookmark]) */}
+                    <BookmarkButton id={shop.id} user={user} />
 
 
                     
