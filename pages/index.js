@@ -53,7 +53,7 @@ class Index extends React.Component {
         );
 
     // Grab product categories
-    this.state.api.getAll('categories', '?section=product')
+    this.state.api.getAll('categories', '?filter[section]=product')
         .then((categories) =>
             this.setState({
                 categories
@@ -74,7 +74,7 @@ class Index extends React.Component {
               </a>
             )) : '';
 
-    const productCategories = this.state.categories ? this.state.categories.data.map((category) => (
+    const productCategories = this.state.categories ? this.state.categories.data.slice(0, 7).map((category) => (
               <a href={`/products/category/${ category.name }`} className="item" key={ category.name }>
                   { category.name }
               </a>)) : '';
@@ -212,6 +212,12 @@ class Index extends React.Component {
           <h1 className="ui header">New Products</h1>
           <nav className="ui secondary pointing menu">
               { productCategories }
+              <div className="right menu">
+                  <a href="/locations/" className="ui item">
+                      <i className="icon search"></i>
+                      More categories
+                  </a>
+              </div>
           </nav>
           <section className="ui centered pt1">
             <PostLoop section="products" count="3" />
