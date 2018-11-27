@@ -15,7 +15,6 @@ class StrainArchivePage extends React.Component {
             .then((results) => (
                 strains = results
             ))
-
         const categoryParams = '?filter[section]=strain'
         await api.getAll('categories', categoryParams)
             .then((results) => (
@@ -30,6 +29,7 @@ class StrainArchivePage extends React.Component {
 
     render() {
         const { strains, categories } = this.props
+        console.log('strains', strains);
 
         const header = <h1 className="ui header">Browsing "<span className="text red">strains</span>"</h1>
 

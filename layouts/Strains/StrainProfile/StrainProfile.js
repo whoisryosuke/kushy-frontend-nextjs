@@ -23,79 +23,32 @@ export default ({ children, strain, profile, section }) => {
                                     </h4>
                                     : ''}
                                 <h2>{strain.name}</h2>
-                                <section className="ui grid">
-                                    <section className="eight wide computer sixteen wide mobile column">
-                                        <p className="StrainHeader__address">
-                                            {strain.location.address ?
-                                                <span>{strain.location.address}
-                                                    <br /></span>
-                                                : ''}
-                                            {strain.location.city || strain.location.state || strain.location.postal_code ?
-                                                <span>{strain.location.city}, {strain.location.state} {strain.location.postal_code}</span>
-                                                : ''}
-                                        </p>
-                                        <aside className="StrainHeader__hours">
-                                            <span className="ui label red" title="This strain is currently open">
-                                                <i className="icon clock"></i>
-                                                Open
-                                        </span>
-                                            <span className="ui label" title="This strain is currently closed">
-                                                <i className="icon clock"></i>
-                                                Closed
-                                        </span>
-                                        </aside>
-                                    </section>
-                                    <section className="StrainHeader__btns eight wide computer sixteen wide mobile column">
-                                        {profile ?
-                                            <Link href={`/strains/${strain.slug}/reviews`}>
-                                                <a className="ui button icon red">
-                                                    <i className="icon comment"></i>
-                                                    Write Review
-                                            </a>
-                                            </Link>
-                                            :
-                                            <Link href={config.kushyLogin}>
-                                                <a className="ui button icon red">
-                                                    <i className="icon comment"></i>
-                                                    Sign Up to Review
-                                            </a>
-                                            </Link>
-                                        }
-                                    </section>
-                                </section>
                             </section>
                         </header>
                         <nav className="ui menu inverted red">
                             <Link href={`/strains/${strain.slug}/`}>
                                 <a className={`item ${section == 'details' ? 'active' : ''}`}>
                                     Description
-                            </a>
+                                </a>
                             </Link>
-                            <Link href={`/strains/${strain.slug}/strains`}>
-                                <a className={`item ${section == 'strains' ? 'active' : ''}`}>
-                                    Strains
-                            </a>
+                            <Link href={`/strains/${strain.slug}/products`}>
+                                <a className={`item ${section == 'products' ? 'active' : ''}`}>
+                                    Products
+                                </a>
                             </Link>
                             <Link href={`/strains/${strain.slug}/reviews/`}>
                                 <a className={`item ${section == 'reviews' ? 'active' : ''}`}>
                                     Reviews
-                            </a>
+                                </a>
                             </Link>
                             <Link href={`/strains/${strain.slug}/photos/`}>
                                 <a className={`item ${section == 'photos' ? 'active' : ''}`}>
                                     Photos
-                            </a>
-                            </Link>
-                            <Link href={`/strains/${strain.slug}/events/`}>
-                                <a className={`item ${section == 'events' ? 'active' : ''}`}>
-                                    Events
-                            </a>
+                                </a>
                             </Link>
                         </nav>
                         <section id="StrainContent">
-
                             {children}
-
                         </section>
 
                     </section>
