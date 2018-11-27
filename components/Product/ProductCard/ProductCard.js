@@ -7,7 +7,7 @@ export default (props) => {
   return (
     <Card className="ProductArchive">
         <Link href={`/products/${ product.slug }`}>
-            <Image src={ product.featured_img } alt={ product.name } />
+            <a><Image src={ product.featured_img } alt={ product.name } /></a>
         </Link>
         <Card.Content>
             { product.brand ?
