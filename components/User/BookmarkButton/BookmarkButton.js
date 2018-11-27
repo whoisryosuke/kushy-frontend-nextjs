@@ -27,19 +27,20 @@ export default class BookmarkButton extends Component {
     const token = getCookie("kushyFToken", null);
     api.setToken(token);
     // Query API with token and submit account settings from state
-    api
-      .checkBookmark(this.props.user.id, this.props.id)
-      .then(results => {
-        return results;
-      })
-      .then(results => {
-        if (results.data.length > 0) {
-          // Save the bookmark ID to the state for use later
-          this.setState({ bookmark: results.data[0].id });
-        }
-        this.setState({ loading: false, disabled: false });
-      });
-
+    if(token) {
+      api
+        .checkBookmark(this.props.user.id, this.props.id)
+        .then(results => {
+          return results;
+        })
+        .then(results => {
+          if (results.data.length > 0) {
+            // Save the bookmark ID to the state for use later
+            this.setState({ bookmark: results.data[0].id });
+          }
+          this.setState({ loading: false, disabled: false });
+        });
+    }
   }
 
   
@@ -53,6 +54,7 @@ export default class BookmarkButton extends Component {
     // attach to headers before fetching
     const token = getCookie('kushyFToken', null)
     api.setToken(token);
+    console.log(this.props.user.id, this.props.id)
     // Query API with token and submit account settings from state
     api.createBookmark(this.props.user.id, this.props.id)
       .then((results) => {
