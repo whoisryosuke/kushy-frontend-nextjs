@@ -65,9 +65,7 @@ export default class SearchExampleStandard extends Component {
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
     
-    console.log('should be running debounce');
-      timeout = setTimeout(() => {
-          console.log('timing out function')
+    const timeout = setTimeout(() => {
           this.queryApi()
       }, 420);
   }
