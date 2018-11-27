@@ -185,6 +185,10 @@ app.prepare()
       return app.render(req, res, '/brands/details', { slug: req.params.slug })
     })
 
+    server.get('/brands/:slug/reviews', (req, res) => {
+      return app.render(req, res, '/brands/reviews', { slug: req.params.slug, csrf: req.csrfToken() })
+    })
+
     /**
      * Strains
      */
@@ -200,6 +204,10 @@ app.prepare()
       return app.render(req, res, '/strains/details', { slug: req.params.slug })
     })
 
+    server.get('/strains/:slug/reviews', (req, res) => {
+      return app.render(req, res, '/strains/reviews', { slug: req.params.slug, csrf: req.csrfToken() })
+    })
+
     /**
      * Products
      */
@@ -213,6 +221,10 @@ app.prepare()
 
     server.get('/products/:slug', (req, res) => {
       return app.render(req, res, '/products/details', { slug: req.params.slug })
+    })
+
+    server.get('/products/:slug/reviews', (req, res) => {
+      return app.render(req, res, '/products/reviews', { slug: req.params.slug, csrf: req.csrfToken() })
     })
 
     /**
@@ -247,9 +259,6 @@ app.prepare()
         review: req.body.review
       }
 
-      console.log(form)
-
-      console.log(req.cookies["kushyFToken"])
       let newReview
       if (req.cookies["kushyFToken"]) {
         newReview = await queryApi("reviews", "POST", req.cookies["kushyFToken"], form);
