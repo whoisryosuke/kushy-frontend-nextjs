@@ -4,7 +4,7 @@ export default {
   kushyLogin:
     "http://localhost/oauth/authorize/?client_id=1&redirect_uri=http://localhost:3000/token&response_type=code&scope=access-user-account",
   assets: {
-    root: "https://kushy-frontend-assets.s3.amazonaws.com/",
+    root: "https://s3.amazonaws.com/kushy-frontend-assets/",
     site: "assets/",
     uploads: "uploads/"
   }
