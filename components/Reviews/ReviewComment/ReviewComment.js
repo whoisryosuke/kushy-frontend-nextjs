@@ -1,14 +1,16 @@
 import React from 'react'
 import { Comment } from 'semantic-ui-react'
+import nicetime from 'utils/nicetime'
+import UserAvatar from 'components/User/Avatar/Avatar'
 
 export default ({ review }) => {
   return (
     <Comment>
-      <Comment.Avatar src={ review.user.avatar } />
+      <UserAvatar avatar={review.includes.user.avatar} name={review.includes.user.name} linkClass="avatar" />
       <Comment.Content>
-        <Comment.Author as='a'>{ review.user.name }</Comment.Author>
+        <Comment.Author as='a'>{ review.includes.user.name }</Comment.Author>
         <Comment.Metadata>
-          <div>{ review.created_at.date }</div>
+          <div>{ nicetime(review.created_at.date) }</div>
         </Comment.Metadata>
         <Comment.Text>{ review.review }</Comment.Text>
         <Comment.Actions>
