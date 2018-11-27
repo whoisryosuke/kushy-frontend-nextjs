@@ -209,8 +209,18 @@ export default class KushyApi {
         })
     }
 
+    getUserBookmarks = (user_id) => {
+        const url = `${this.domain}/bookmarks/user/?include=post`;
+        
+        return this.fetch(url, {
+          method: "GET"
+        }).then(res => {
+          return Promise.resolve(res);
+        });
+    }
+
     checkBookmark = (user_id, post_id) => {
-        const url = `${this.domain}/bookmarks/?filter[post_id]=${post_id}&user_id=${user_id}`;
+        const url = `${this.domain}/bookmarks/?filter[post_id]=${post_id}&filter[user_id]=${user_id}`;
         
         return this.fetch(url, {
           method: "GET"
