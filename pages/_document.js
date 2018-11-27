@@ -1,7 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 
-import 'kushy-design/semantic/dist/semantic.css'
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)

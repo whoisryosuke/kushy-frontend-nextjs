@@ -4,6 +4,8 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import withReduxStore from 'lib/with-redux-store'
 import { Provider } from 'react-redux'
 
+import 'kushy-design/semantic/dist/semantic.css'
+
 class MyApp extends App {
   render () {
     const {Component, pageProps, reduxStore, persistor} = this.props
