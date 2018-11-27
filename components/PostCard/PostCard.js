@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import BrandCard from "components/Brand/BrandCard/BrandCard";
 import ProductCard from "components/Product/ProductCard/ProductCard";
 import ShopCard from "components/Shop/ShopCard/ShopCard";
+import StrainCard from "components/Strain/StrainCard";
 
 /**
  * Card facade for section cards
@@ -27,6 +28,10 @@ const PostCard = (props) => {
 
       case 'products':
       card = <ProductCard  {...props} />
+        break;
+
+      case 'strains':
+      card = <StrainCard  {...props} />
         break;
 
       default:

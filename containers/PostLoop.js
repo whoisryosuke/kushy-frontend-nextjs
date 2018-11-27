@@ -33,7 +33,14 @@ export class PostLoop extends Component {
     const cards = loop ? loop.map((data) => (
           <PostCard key={ data.id } section={ section } data={ data } />
       )) : '';
-    
+
+    if (this.props.section === 'strains') {
+      return(
+        <section class="ui grid centered">
+          {cards}
+        </section>
+      )
+    }
     return (
       <Card.Group itemsPerRow={columns} centered stackable>
           { cards }
