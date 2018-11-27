@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "@zeit/next-css": "^0.2.0",
+    "@zeit/next-css": "^1.0.1",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "dotenv": "^6.0.0",
@@ -18,7 +18,7 @@
     "js-cookie": "^2.2.0",
     "kushy-design": "0.0.3",
     "moment": "^2.22.2",
-    "next": "6.0.3",
+    "next": "^7.0.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
     "react": "16.4.1",
