@@ -11,7 +11,7 @@ export default ({ avatar, name, classes }) => {
         </a>
       :
         <a href={`/user/${ name }`} className="author">
-          <img src={`${ s3 }img/Icons/icon-user.svg`} className={`ui image medium avatar ${ classes ? classes : ''}`} alt={`${name} avatar`} />
+          <img src={`${ s3 }Icons/icon-user.svg`} className={`ui image medium avatar ${ classes ? classes : ''}`} alt={`${name} avatar`} />
         </a>
       }
     </div>
