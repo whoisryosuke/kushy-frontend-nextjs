@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Link from 'next/link'
 import Main from 'layouts/Main/Main'
 import KushyApi from 'utils/KushyApi'
+import config from "config/config";
 
 import PostLoop from 'containers/PostLoop'
 
@@ -65,6 +66,7 @@ class Index extends React.Component {
 
   render () {
     const { profile } = this.props
+    const s3 = config.assets.root + config.assets.site;
 
     const cities = this.state.cities && this.state.states ? this.state.cities.slice(0, 7).map((city) => (
               <a href={`/${ city.slug }/${ this.state.states.slug}`} className="item" key={ city.slug }>
@@ -200,7 +202,7 @@ class Index extends React.Component {
                               </a>
                   </section>
                   <section className="eight wide column">
-                      <img src="img/BusinessTour/widgets.png" alt="Manage your listing on the go with our mobile optimized interface" width="100%" />
+                      <img src={`${s3}BusinessTour/widgets.png`} alt="Manage your listing on the go with our mobile optimized interface" width="100%" />
                   </section>
               </section>
           </section> : ''
