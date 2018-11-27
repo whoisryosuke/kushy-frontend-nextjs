@@ -6,6 +6,7 @@ import KushyApi from 'utils/KushyApi'
 import config from "config/config";
 
 import PostLoop from 'containers/PostLoop'
+import ActivityCard from 'components/Activity/ActivityCard'
 
 class Index extends React.Component {
   static getInitialProps ({ reduxStore, req }) {
@@ -60,6 +61,13 @@ class Index extends React.Component {
             })
         );
 
+    this.state.api.getAll('activity', '?include=post,user')
+        .then((activity) =>
+            this.setState({
+                activity
+            })
+        );
+
     // Grab all user activity
 
   }
@@ -78,6 +86,9 @@ class Index extends React.Component {
               <a href={`/products/category/${ category.name }`} className="item" key={ category.name }>
                   { category.name }
               </a>)) : '';
+
+    const activity = this.state.activity ? this.state.activity.data.slice(0, 3).map((activity) => (
+              <ActivityCard activity={activity} />)) : '';
 
     return (
       <Main>
@@ -187,19 +198,19 @@ class Index extends React.Component {
           <section className="ui red inverted segment cta pt2 mb2">
               <section className="cta__content ui grid">
                   <section className="eight wide column">
-                      <h2>Reserve and review products from over 3,000 cannabis businesses</h2>
-                      <p>Join our community and create your own customized profile. Gain access to essential privileges like posting reviews or preordering products.</p>
+                        <h2>Reserve and review products from over 3,000 cannabis businesses</h2>
+                        <p>Join our community and create your own customized profile. Gain access to essential privileges like posting reviews or preordering products.</p>
 
-                      <a href="/register/" className="ui button">Create your account</a>
-                              <a href="/login/facebook" className="ui facebook button icon mini" title="Sign in using Facebook">
-                                  <i className="facebook icon"></i>
-                              </a>
-                              <a href="/login/twitter/" className="ui twitter button icon mini" title="Sign in using Twitter">
-                                  <i className="twitter icon"></i>
-                              </a>
-                              <a href="/login/google" className="ui google plus button icon mini" title="Sign in using Google">
-                                  <i className="google plus icon"></i>
-                              </a>
+                        <a href="/register/" className="ui button">Create your account</a>
+                        <a href="/login/facebook" className="ui facebook button icon mini" title="Sign in using Facebook">
+                            <i className="facebook icon"></i>
+                        </a>
+                        <a href="/login/twitter/" className="ui twitter button icon mini" title="Sign in using Twitter">
+                            <i className="twitter icon"></i>
+                        </a>
+                        <a href="/login/google" className="ui google plus button icon mini" title="Sign in using Google">
+                            <i className="google plus icon"></i>
+                        </a>
                   </section>
                   <section className="eight wide column">
                       <img src={`${s3}BusinessTour/widgets.png`} alt="Manage your listing on the go with our mobile optimized interface" width="100%" />
@@ -260,9 +271,7 @@ class Index extends React.Component {
           <h1 className="ui header">Latest Activity</h1>
           <section className="ui grid centered pt1">
               <section className="ui link three cards centered stackable">
-                  @foreach ($activityFeed as $activity)
-                      @include("components.activity.card.$activity->section", [ 'activity' => $activity ])
-                  @endforeach
+                  { activity }
               </section>
           </section>
           <section className="ui grid center">
