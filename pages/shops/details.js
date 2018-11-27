@@ -33,9 +33,9 @@ class ShopDetails extends React.Component {
       const { shop, profile } = this.props
     return (
         <ShopProfile shop={shop} user={profile} section="details">
-        <section id="details" class="ContentBox">
-            <h2 class="ui header">Shop Description</h2>
-            <article class="ui segment">
+        <section id="details" className="ContentBox">
+            <h2 className="ui header">Shop Description</h2>
+            <article className="ui segment">
                 { shop.description }    
             </article>
         </section>
