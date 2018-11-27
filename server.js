@@ -114,6 +114,22 @@ app.prepare()
       return app.render(req, res, '/user/settings')
     })
 
+    server.get('/dashboard/bookmarks', (req, res) => {
+      return app.render(req, res, '/user/bookmarks')
+    })
+
+
+    /**
+     * Developer Section
+     */
+
+    server.get("/developers", (req, res) => {
+      return app.render(req, res, "/developers/main");
+    });
+
+    server.get("/developers/getting-started", (req, res) => {
+      return app.render(req, res, "/developers/gettingstarted");
+    });
 
     /**
      * Static routes
@@ -124,6 +140,10 @@ app.prepare()
 
     server.get('/advertise', (req, res) => {
       return app.render(req, res, "/static/advertise");
+    })
+
+    server.get('/business', (req, res) => {
+      return app.render(req, res, "/static/business");
     })
 
     server.get('/contact', (req, res) => {
@@ -144,6 +164,10 @@ app.prepare()
 
     server.get('/terms', (req, res) => {
       return app.render(req, res, "/static/terms");
+    })
+
+    server.get('/content-guidelines', (req, res) => {
+      return app.render(req, res, "/static/contentguidelines");
     })
 
     /**
