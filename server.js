@@ -281,6 +281,15 @@ app.prepare()
       return app.render(req, res, '/shops/photos', { slug: req.params.slug })
     })
 
+
+    /**
+     * Search
+     */
+
+    server.get('/search', (req, res) => {
+      return app.render(req, res, '/search/search')
+    })
+
     // Callback for OAuth2 API
     server.get('/token', (req, res) => {
       const callback = {
