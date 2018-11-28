@@ -66,8 +66,16 @@ export default class KushyApi {
         })
     }
 
-    search = (field, search) => {
-        const url = `${this.domain}/search/posts/?filter[${field}]=${search}`
+    /**
+     * Uses the /search/ endpoint to query the Posts model
+     * Filters are an array of objects with field and search properties
+     * e.g: filters = [{ field: 'name', search: 'weed' }, { ... }]
+     *
+     * @memberof KushyApi
+     * @param {Array} filters
+     */
+    search = (filters) => {
+        const url = `${this.domain}/search/posts/?${filters}`;
         return this.fetch(url, {
             method: 'GET'
         }).then(res => {
