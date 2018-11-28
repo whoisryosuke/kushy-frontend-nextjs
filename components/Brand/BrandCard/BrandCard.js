@@ -9,7 +9,7 @@ export default (props) => {
             <Card link className="BrandArchive">
                 <Image src={brand.featured_img} alt={brand.name} />
                 <Card.Content>
-                    {brand.includes.categories && brand.includes.categories.length > 0 ?
+                    {'categories' in brand.includes && brand.includes.categories.length > 0 ?
                         <Card.Meta>
                             {brand.includes.categories[0].category.name}
                         </Card.Meta>

@@ -4,6 +4,15 @@ import { Card, Image, Rating, Label } from 'semantic-ui-react'
 
 export default (props) => {
   const { data:product } = props
+  let categories
+  if('categories' in product) { 
+      categories = product.categories;
+  }
+  if('includes' in product) { 
+      if('categories' in product.includes) {
+        categories = product.categories;
+      }
+  }
   return (
     <Card className="ProductArchive">
         <Link href={`/products/${ product.slug }`}>
@@ -22,10 +31,10 @@ export default (props) => {
             </Card.Header>
         </Card.Content>
         <Card.Content extra>
-            { product.categories.length > 0 ?
+            { categories && categories.length > 0 ?
             <aside className="right floated">
 
-                { product.categories.map((category) => (
+                { categories.map((category) => (
                     <Label>
                         { category.name }
                     </Label>
