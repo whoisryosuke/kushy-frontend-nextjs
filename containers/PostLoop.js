@@ -31,7 +31,7 @@ export class PostLoop extends Component {
     }
 
     const cards = loop ? loop.map((data) => (
-          <PostCard key={ data.id } section={ section } data={ data } />
+          <PostCard key={ data.id } section={section ? section : data.section + 's'} data={ data } />
       )) : '';
 
     if (this.props.section === 'strains') {
